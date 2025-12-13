@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaBriefcase, FaGraduationCap } from 'react-icons/fa';
-import { FiMapPin, FiCalendar, FiArrowRight, FiX } from 'react-icons/fi';
+import { Briefcase, GraduationCap, MapPin, Calendar, ArrowRight, X, Zap, BarChart3 } from 'lucide-react';
 
 // --- Data from Resume ---
 const experienceData = [
@@ -13,15 +12,15 @@ const experienceData = [
     type: "Full Time",
     date: "Apr 2025 - Present",
     desc: "Driving strategy and operational excellence. Leading high-impact product innovations and reducing friction in user journeys.",
-    logo: FaBriefcase, // Placeholder icon
+    logo: Briefcase, // Placeholder icon
     highlight: true, // This mimics the green card in your reference
-    achievements: [
-      "Driving strategy and operational excellence",
-      "Leading high-impact product innovations",
-      "Reducing friction in user journeys",
-      "Cutting grading time by 60% with AI",
-      "Building N8N automations to save hours of manual effort"
-    ]
+    metrics: [
+      { label: "Grading Efficiency", value: "+60%", desc: "Reduced grading time using AI automation." },
+      { label: "Manual Effort", value: "-20hrs", desc: "Saved per week via N8N workflows." },
+      { label: "User Adoption", value: "90%", desc: "For new LMS features shipped." },
+      { label: "Stakeholders", value: "15+", desc: "Managed cross-functional teams." }
+    ],
+    stack: ["Jira", "Figma", "SQL", "N8N"]
   },
   {
     id: 2,
@@ -31,14 +30,14 @@ const experienceData = [
     type: "Full Time",
     date: "Jun 2023 - May 2025",
     desc: "Authored 100+ PRDs and prioritized features for LMS platforms. Reduced engineering rework by 80% through clear wireframing.",
-    logo: FaBriefcase,
+    logo: Briefcase,
     highlight: false,
-    achievements: [
-      "Authored 100+ Product Requirement Documents (PRDs)",
-      "Prioritized features for LMS platforms",
-      "Reduced engineering rework by 80% through clear wireframing",
-      "Conducted user research and data analysis"
-    ]
+    metrics: [
+      { label: "Data Accuracy", value: "99%", desc: "Cleaned legacy student databases." },
+      { label: "Reports", value: "Weekly", desc: "Automated executive dashboards." },
+      { label: "Rework Reduction", value: "-80%", desc: "Through clear wireframing." }
+    ],
+    stack: ["Excel", "Python", "Tableau"]
   },
   {
     id: 3,
@@ -48,13 +47,14 @@ const experienceData = [
     type: "Internship",
     date: "Apr 2023 - Jun 2023",
     desc: "Built Power BI dashboards reducing KPI reporting time by 30%. Developed IT solutions that cut costs by 15%.",
-    logo: FaBriefcase,
+    logo: Briefcase,
     highlight: false,
-    achievements: [
-      "Built Power BI dashboards reducing KPI reporting time by 30%",
-      "Developed IT solutions that cut costs by 15%",
-      "Streamlined operational processes"
-    ]
+    metrics: [
+      { label: "Reporting Time", value: "-30%", desc: "Reduced KPI reporting time." },
+      { label: "Cost Savings", value: "15%", desc: "Cut costs with IT solutions." },
+      { label: "Applications", value: "500+", desc: "Processed per month." }
+    ],
+    stack: ["Power BI", "Salesforce"]
   },
   {
     id: 4,
@@ -64,14 +64,13 @@ const experienceData = [
     type: "Internship",
     date: "May 2022 - Jul 2022",
     desc: "Managed creative teams and secured partnerships with 15% of target workshops. Increased team productivity by 30%.",
-    logo: FaBriefcase,
+    logo: Briefcase,
     highlight: false,
-    achievements: [
-      "Managed creative teams",
-      "Secured partnerships with 15% of target workshops",
-      "Increased team productivity by 30%",
-      "Developed marketing strategies"
-    ]
+    metrics: [
+      { label: "Partnerships", value: "15%", desc: "Of target workshops secured." },
+      { label: "Productivity", value: "+30%", desc: "Increased team productivity." }
+    ],
+    stack: ["Canva", "Google Ads", "Notion"]
   }
 ];
 
@@ -84,12 +83,12 @@ const educationData = [
     type: "Post Grad",
     date: "2021 - 2023",
     desc: "Secured victories in three Inter-College competitions at IIM Rohtak, MDI Gurgaon, and IMT Ghaziabad.",
-    logo: FaGraduationCap,
+    logo: GraduationCap,
     highlight: true,
-    achievements: [
-      "Secured victories in three Inter-College competitions at IIM Rohtak, MDI Gurgaon, and IMT Ghaziabad",
-      "Developed leadership and strategic thinking skills"
-    ]
+    metrics: [
+      { label: "Competitions Won", value: "3", desc: "Inter-College victories." }
+    ],
+    stack: []
   },
   {
     id: 2,
@@ -99,12 +98,12 @@ const educationData = [
     type: "Bachelor's",
     date: "2016 - 2019",
     desc: "Specialized in Mathematics. Built a strong foundation in analytical thinking and problem-solving.",
-    logo: FaGraduationCap,
+    logo: GraduationCap,
     highlight: false,
-    achievements: [
-      "Specialized in Mathematics",
-      "Built a strong foundation in analytical thinking and problem-solving"
-    ]
+    metrics: [
+      { label: "Specialization", value: "Mathematics", desc: "Analytical foundation." }
+    ],
+    stack: []
   }
 ];
 
@@ -136,7 +135,7 @@ const InfoCard = ({ item, onClick }) => {
           <Icon size={24} />
         </div>
         <div className="text-xs font-bold opacity-60 flex items-center gap-1">
-          <FiMapPin size={12} /> {item.location}
+          <MapPin size={12} /> {item.location}
         </div>
       </div>
 
@@ -159,7 +158,7 @@ const InfoCard = ({ item, onClick }) => {
       {/* Footer: Date */}
       <div className="mt-auto pt-4 border-t-2 border-black/10 flex items-center gap-2 text-xs font-bold">
         <div className="bg-black text-white p-1 rounded-full">
-          <FiCalendar size={12} />
+          <Calendar size={12} />
         </div>
         {item.date}
       </div>
@@ -170,6 +169,14 @@ const InfoCard = ({ item, onClick }) => {
 export default function ExperienceSection() {
   const [activeTab, setActiveTab] = useState('experience'); // 'experience' | 'education'
   const [selectedItem, setSelectedItem] = useState(null);
+
+  const data = activeTab === 'experience' ? experienceData : educationData;
+
+  const groupedData = data.reduce((acc, item) => {
+    if (!acc[item.company]) acc[item.company] = [];
+    acc[item.company].push(item);
+    return acc;
+  }, {});
 
   // Prevent background scroll when modal is open
   useEffect(() => {
@@ -182,8 +189,26 @@ export default function ExperienceSection() {
       document.body.style.overflow = 'unset';
     };
   }, [selectedItem]);
-  
-  const data = activeTab === 'experience' ? experienceData : educationData;
+
+  // Keyboard navigation
+  useEffect(() => {
+    if (!selectedItem) return;
+    const handleKeyDown = (e) => {
+      if (e.key === 'ArrowLeft') {
+        const currentIndex = data.findIndex(item => item.id === selectedItem.id);
+        const prevIndex = currentIndex > 0 ? currentIndex - 1 : data.length - 1;
+        setSelectedItem(data[prevIndex]);
+      } else if (e.key === 'ArrowRight') {
+        const currentIndex = data.findIndex(item => item.id === selectedItem.id);
+        const nextIndex = currentIndex < data.length - 1 ? currentIndex + 1 : 0;
+        setSelectedItem(data[nextIndex]);
+      } else if (e.key === 'Escape') {
+        setSelectedItem(null);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedItem, data]);
 
   return (
     <section id="experience" className="w-full py-24 bg-[#fafafa] border-b-2 border-black font-sans">
@@ -212,7 +237,7 @@ export default function ExperienceSection() {
               `}
             >
               Experience
-              {activeTab === 'experience' && <FiArrowRight size={16} />}
+              {activeTab === 'experience' && <ArrowRight size={16} />}
             </button>
 
             <button
@@ -225,14 +250,14 @@ export default function ExperienceSection() {
               `}
             >
               Education
-              {activeTab === 'education' && <FiArrowRight size={16} />}
+              {activeTab === 'education' && <ArrowRight size={16} />}
             </button>
           </div>
         </div>
 
         {/* Grid Layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <AnimatePresence mode="wait">
+          <AnimatePresence>
             {data.map((item) => (
               <InfoCard key={item.id} item={item} onClick={() => setSelectedItem(item)} />
             ))}
@@ -242,99 +267,123 @@ export default function ExperienceSection() {
         {/* Modal for Details */}
         <AnimatePresence>
           {selectedItem && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
-              onClick={() => setSelectedItem(null)}
-            >
+            <div className="fixed inset-0 z-[60] flex items-center justify-center p-4">
+
+              {/* Backdrop */}
+              <div
+                className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+                onClick={() => setSelectedItem(null)}
+              />
+
+              {/* Main Modal Card */}
               <motion.div
-                initial={{ scale: 0.9, y: 50 }}
-                animate={{ scale: 1, y: 0 }}
-                exit={{ scale: 0.9, y: 50 }}
-                onClick={(e) => e.stopPropagation()}
-                className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-white border-2 border-black rounded-3xl shadow-[8px_8px_0px_0px_#000]"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                className="relative bg-white w-full max-w-5xl h-[600px] rounded-3xl border-4 border-black shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] overflow-hidden flex flex-col md:flex-row font-sans"
               >
-                {/* Close Button - Top Right Corner */}
-                <button
-                  onClick={() => setSelectedItem(null)}
-                  className="absolute top-4 right-4 z-10 bg-white border-2 border-black rounded-full p-2 hover:bg-[#DFFF00] transition-colors shadow-[4px_4px_0px_0px_#000]"
-                >
-                  <FiX size={24} />
-                </button>
 
-                {/* Item Selector */}
-                {data && data.length > 1 && (
-                  <div className="p-4 border-b-2 border-black bg-gray-50">
-                    <div className="flex flex-wrap gap-2">
-                      {data.map((item) => (
-                        <button
-                          key={item.id}
-                          onClick={() => setSelectedItem(item)}
-                          className={`px-4 py-2 rounded-lg border-2 font-bold text-sm transition-all ${
-                            item.id === selectedItem.id
-                              ? 'bg-[#DFFF00] border-black'
-                              : 'bg-white border-gray-300 hover:border-black'
-                          }`}
-                        >
-                          {item.company} - {item.role}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* Modal Content */}
-                <div className="p-8">
-                  <div className="flex flex-col md:flex-row gap-8 justify-between items-start mb-8">
-                    <div>
-                      <div className="inline-block px-3 py-1 bg-[#DFFF00] border-2 border-black rounded-lg text-xs font-bold uppercase tracking-widest mb-3">
-                        {selectedItem.type}
+                {/* LEFT SIDEBAR: Career Navigation */}
+                <div className="w-full md:w-1/3 bg-gray-50 border-r-2 border-black p-6 overflow-y-auto">
+                  <h3 className="text-xs font-black uppercase tracking-widest text-gray-400 mb-6">Career Timeline</h3>
+                  <div className="space-y-4">
+                    {Object.entries(groupedData).map(([company, roles]) => (
+                      <div key={company}>
+                        <div className="text-xs font-bold uppercase mb-2 opacity-70">{company}</div>
+                        <div className="space-y-2 ml-4">
+                          {roles.map((role) => (
+                            <button
+                              key={role.id}
+                              onClick={() => setSelectedItem(role)}
+                              className={`w-full text-left p-3 rounded-xl border-2 transition-all group ${
+                                selectedItem.id === role.id
+                                  ? 'bg-black border-black text-white shadow-[4px_4px_0px_0px_#DFFF00]'
+                                  : 'bg-white border-transparent hover:border-black hover:bg-white text-gray-500 hover:text-black'
+                              }`}
+                            >
+                              <div className="font-black leading-tight text-sm">
+                                {role.role}
+                              </div>
+                            </button>
+                          ))}
+                        </div>
                       </div>
-                      <h2 className="text-3xl font-black uppercase leading-none mb-2">{selectedItem.company}</h2>
-                      <p className="text-xl font-bold opacity-80 mb-4">{selectedItem.role}</p>
-                      <p className="text-base text-gray-600 leading-relaxed max-w-2xl">
-                        {selectedItem.desc}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Achievements */}
-                  {selectedItem.achievements && (
-                    <div className="mb-10">
-                      <h3 className="flex items-center gap-2 text-base font-bold uppercase mb-4">
-                        Key Achievements
-                      </h3>
-                      <ul className="space-y-3">
-                        {selectedItem.achievements.map((ach, i) => (
-                          <li key={i} className="flex items-start gap-3">
-                            <div className="w-2 h-2 bg-black rounded-full mt-2 shrink-0"></div>
-                            <span className="text-gray-700 leading-relaxed">{ach}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-
-                  {/* Location and Date */}
-                  <div className="flex flex-col md:flex-row gap-4 text-sm font-bold">
-                    <div className="flex items-center gap-2">
-                      <div className="bg-black text-white p-2 rounded-full">
-                        <FiMapPin size={14} />
-                      </div>
-                      {selectedItem.location}
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <div className="bg-black text-white p-2 rounded-full">
-                        <FiCalendar size={14} />
-                      </div>
-                      {selectedItem.date}
-                    </div>
+                    ))}
                   </div>
                 </div>
+
+                {/* RIGHT CONTENT: Role Details */}
+                <div className="flex-1 p-8 md:p-10 flex flex-col overflow-y-auto relative bg-white">
+
+                  {/* Close Button */}
+                  <button
+                    onClick={() => setSelectedItem(null)}
+                    className="absolute top-4 right-4 z-10 bg-white border-2 border-black rounded-full p-2 hover:bg-[#DFFF00] transition-colors shadow-[4px_4px_0px_0px_#000]"
+                  >
+                    <X size={24} />
+                  </button>
+
+                  {/* Header */}
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={selectedItem.id}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -20 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <div className="mb-6">
+                        <div className="inline-flex items-center gap-2 bg-[#DFFF00] border border-black px-3 py-1 rounded-full text-xs font-black uppercase tracking-widest mb-3">
+                          <Zap size={12} className="fill-black" /> {selectedItem.type}
+                        </div>
+                        <h2 className="text-3xl font-black uppercase leading-none mb-2">
+                          {selectedItem.role}
+                        </h2>
+                        <div className="flex items-center gap-4 text-xs font-bold text-gray-500 uppercase">
+                          <span className="flex items-center gap-1"><MapPin size={14} /> {selectedItem.location}</span>
+                          <span className="flex items-center gap-1"><Calendar size={14} /> {selectedItem.date}</span>
+                        </div>
+                      </div>
+
+                      {/* Description */}
+                      <p className="text-base font-medium text-gray-800 leading-relaxed mb-8 max-w-2xl border-l-4 border-[#DFFF00] pl-4">
+                        {selectedItem.desc}
+                      </p>
+
+                      {/* Achievements */}
+                      {selectedItem.achievements && selectedItem.achievements.length > 0 && (
+                        <div className="mb-8">
+                          <h4 className="text-xs font-black uppercase tracking-widest text-gray-400 mb-4">Key Achievements</h4>
+                          <ul className="space-y-3">
+                            {selectedItem.achievements.map((ach, i) => (
+                              <li key={i} className="flex items-start gap-3">
+                                <div className="w-2 h-2 bg-black rounded-full mt-2 shrink-0"></div>
+                                <span className="text-gray-700 leading-relaxed">{ach}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+
+                      {/* Tech Stack Footer */}
+                      {selectedItem.stack && selectedItem.stack.length > 0 && (
+                        <div>
+                          <h4 className="text-xs font-black uppercase tracking-widest text-gray-400 mb-3">Tool Stack</h4>
+                          <div className="flex flex-wrap gap-2">
+                            {selectedItem.stack.map((tool) => (
+                              <span key={tool} className="px-3 py-1.5 rounded-lg border border-black text-xs font-bold uppercase shadow-[2px_2px_0px_0px_rgba(0,0,0,0.1)]">
+                                {tool}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
               </motion.div>
-            </motion.div>
+            </div>
           )}
         </AnimatePresence>
 
