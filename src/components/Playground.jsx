@@ -94,7 +94,7 @@ export default function Playground() {
           </div>
 
           {/* RIGHT COLUMN: The Game Container */}
-          <div className="flex-1 w-full h-[450px] bg-white border-2 border-black rounded-3xl overflow-hidden shadow-[8px_8px_0px_0px_#000] relative">
+          <div className="flex-1 w-full h-[550px] bg-white border-2 border-black rounded-3xl overflow-hidden shadow-[8px_8px_0px_0px_#000] relative">
             <AnimatePresence mode="wait">
               {activeTab === 'generator' ? (
                 <motion.div

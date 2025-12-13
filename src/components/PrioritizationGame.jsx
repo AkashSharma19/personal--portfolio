@@ -95,7 +95,7 @@ export default function PrioritizationGame() {
       <div className="max-w-xl w-full px-6 flex flex-col items-center">
 
         {/* Header */}
-        <div className="text-center mb-6">
+        <div className="text-center mb-4">
           <div className="inline-block bg-[#DFFF00] border-2 border-black px-3 py-1 rounded-full text-xs font-black uppercase tracking-widest mb-4 shadow-[4px_4px_0px_0px_#000]">
             Simulator
           </div>
@@ -154,14 +154,20 @@ export default function PrioritizationGame() {
                     </p>
                   </div>
 
-                  {/* Swipe Hints (Visual only) */}
-                  <div className="flex justify-between mt-6 pt-6 border-t-2 border-dashed border-gray-200 opacity-40">
-                    <div className="flex items-center gap-1 text-red-500 font-black uppercase text-xs">
+                  {/* Action Buttons */}
+                  <div className="flex justify-between mt-6 pt-6 border-t-2 border-dashed border-gray-200">
+                    <button
+                      onClick={() => handleDecision('kill')}
+                      className="flex items-center gap-1 text-red-500 font-black uppercase text-xs hover:bg-red-50 px-2 py-1 rounded transition-colors"
+                    >
                       <X size={16} /> Kill
-                    </div>
-                    <div className="flex items-center gap-1 text-green-600 font-black uppercase text-xs">
+                    </button>
+                    <button
+                      onClick={() => handleDecision('ship')}
+                      className="flex items-center gap-1 text-green-600 font-black uppercase text-xs hover:bg-green-50 px-2 py-1 rounded transition-colors"
+                    >
                       Ship <Check size={16} />
-                    </div>
+                    </button>
                   </div>
                 </motion.div>
               );
@@ -193,23 +199,6 @@ export default function PrioritizationGame() {
           )}
         </div>
 
-        {/* Manual Controls (For accessibility/Desktop) */}
-        {!gameOver && (
-          <div className="flex gap-3 w-full max-w-sm">
-            <button
-              onClick={() => handleDecision('kill')}
-              className="flex-1 bg-white border-2 border-black py-3 rounded-xl shadow-[4px_4px_0px_0px_#000] hover:bg-red-50 hover:border-red-500 hover:text-red-500 font-black uppercase tracking-widest flex items-center justify-center gap-1 transition-colors text-sm"
-            >
-              <ThumbsDown size={16} /> Kill
-            </button>
-            <button
-              onClick={() => handleDecision('ship')}
-              className="flex-1 bg-[#DFFF00] border-2 border-black py-3 rounded-xl shadow-[4px_4px_0px_0px_#000] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_#000] font-black uppercase tracking-widest flex items-center justify-center gap-1 transition-all text-sm"
-            >
-              Ship <ThumbsUp size={16} />
-            </button>
-          </div>
-        )}
 
         {/* Feedback Logs (Toast Style) */}
         <div className="mt-4 space-y-1 w-full max-w-sm min-h-[40px]">
