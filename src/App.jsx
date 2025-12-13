@@ -6,6 +6,7 @@ import Projects from './components/Projects'
 import Experience from './components/Experience'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
+import FloatingResumeButton from './components/FloatingResumeButton'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Experience />
       <Footer />
       <ScrollToTop />
+      <FloatingResumeButton />
     </div>
   )
 }

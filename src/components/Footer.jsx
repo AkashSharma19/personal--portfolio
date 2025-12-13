@@ -25,7 +25,7 @@ export default function Footer() {
     <footer id="contact" className="relative w-full bg-[#050505] text-white py-24 overflow-hidden font-sans border-t-2 border-black">
 
       {/* Background Decor: The Green Glow */}
-      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-[#DFFF00]/10 rounded-full blur-[120px] pointer-events-none -translate-x-1/2 -translate-y-1/2" />
+      <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-[#DFFF00]/10 rounded-full blur-[120px] pointer-events-none -translate-x-1/2 -translate-y-1/2" />
 
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 relative z-10">
 
@@ -39,7 +39,7 @@ export default function Footer() {
           </div>
 
           {/* Headline */}
-          <h2 className="text-5xl md:text-7xl font-black leading-tight mb-8">
+          <h2 className="text-4xl md:text-6xl font-black leading-tight mb-8">
             Let's Work <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#DFFF00] to-white">
               Together.
@@ -50,21 +50,21 @@ export default function Footer() {
           <div className="space-y-6 mb-12">
              <div className="flex flex-col gap-1">
                <label className="text-xs font-bold text-gray-500 uppercase">Email Me</label>
-               <a href="mailto:sharmaakash4299@gmail.com" className="text-xl md:text-2xl font-bold hover:text-[#DFFF00] transition-colors flex items-center gap-3">
+               <a href="mailto:sharmaakash4299@gmail.com" className="text-lg md:text-xl font-bold hover:text-[#DFFF00] transition-colors flex items-center gap-3">
                  <FiMail size={24} className="text-[#DFFF00]" /> sharmaakash4299@gmail.com
                </a>
              </div>
 
              <div className="flex flex-col gap-1">
                <label className="text-xs font-bold text-gray-500 uppercase">Call Me</label>
-               <a href="tel:+918171846361" className="text-xl md:text-2xl font-bold hover:text-[#DFFF00] transition-colors flex items-center gap-3">
+               <a href="tel:+918171846361" className="text-lg md:text-xl font-bold hover:text-[#DFFF00] transition-colors flex items-center gap-3">
                  <FiPhone size={24} className="text-[#DFFF00]" /> +91 8171846361
                </a>
              </div>
 
              <div className="flex flex-col gap-1">
                <label className="text-xs font-bold text-gray-500 uppercase">Location</label>
-               <p className="text-xl md:text-2xl font-bold flex items-center gap-3">
+               <p className="text-lg md:text-xl font-bold flex items-center gap-3">
                  <FiMapPin size={24} className="text-[#DFFF00]" /> Gurugram, India
                </p>
              </div>
@@ -84,14 +84,14 @@ export default function Footer() {
            <motion.div
              animate={{ y: [0, -15, 0], rotate: [0, 5, 0] }}
              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-             className="absolute -top-12 -right-6 z-20 w-20 h-20 bg-white rounded-full flex items-center justify-center text-4xl shadow-[0px_0px_20px_rgba(255,255,255,0.2)]"
+             className="absolute -top-12 -right-6 z-20 w-16 h-16 bg-white rounded-full flex items-center justify-center text-3xl shadow-[0px_0px_20px_rgba(255,255,255,0.2)]"
            >
              👍
            </motion.div>
 
            {/* Form Container */}
-           <div className="bg-[#1A1A1A] p-8 rounded-3xl border border-white/10 shadow-2xl relative z-10">
-             <h3 className="text-2xl font-bold mb-6">Input Form</h3>
+           <div className="bg-[#1A1A1A] p-6 rounded-2xl border border-white/10 shadow-2xl relative z-10">
+             <h3 className="text-xl font-bold mb-6">Input Form</h3>
 
              <form className="space-y-4">
                {/* Name Row */}

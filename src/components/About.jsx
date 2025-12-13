@@ -1,130 +1,89 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaAward, FaBookOpen, FaMicrochip } from 'react-icons/fa';
-import { FiTerminal } from 'react-icons/fi';
+import { Figma, Database, Code2, BarChart3, Workflow, Users, Layout, Zap, Search, PenTool } from 'lucide-react';
 
-// --- Reusable Components ---
+// --- Data: Your Skills from Resume ---
+const skills = [
+  { name: "Figma", icon: Figma }, // [cite: 5]
+  { name: "Power BI", icon: BarChart3 }, // [cite: 7]
+  { name: "SQL", icon: Database },
+  { name: "N8N Automation", icon: Workflow }, // [cite: 18]
+  { name: "Notion", icon: Layout }, // [cite: 5]
+  { name: "Jira", icon: Users }, // [cite: 8]
+  { name: "Google Analytics", icon: Search }, // [cite: 38]
+  { name: "Miro", icon: Zap }, // [cite: 5]
+  { name: "Wireframing", icon: PenTool }, // [cite: 6]
+];
 
-const BentoCard = ({ title, icon: Icon, children, className = "" }) => (
+// --- Sub-Component: Skill Pill ---
+const SkillPill = ({ name, icon: Icon, index }) => (
   <motion.div
-    whileHover={{ translateX: 4, translateY: 4, boxShadow: '2px 2px 0px 0px #000' }}
-    className={`bg-white border-2 border-black p-6 rounded-2xl shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] flex flex-col gap-4 ${className}`}
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ delay: index * 0.05 }}
+    whileHover={{ y: -5, boxShadow: '4px 4px 0px 0px #000' }}
+    className="flex items-center gap-2 px-6 py-3 bg-white border-2 border-black rounded-full shadow-[2px_2px_0px_0px_#000] cursor-default transition-all hover:bg-[#DFFF00]"
   >
-    <div className="flex items-center gap-3 border-b-2 border-black pb-3 mb-2">
-      <div className="bg-[#DFFF00] p-2 rounded-lg border-2 border-black">
-        <Icon size={20} />
-      </div>
-      <h3 className="font-bold text-xl uppercase font-sans tracking-tight">{title}</h3>
-    </div>
-    <div className="text-gray-800 font-medium leading-relaxed">
-      {children}
-    </div>
+    <Icon size={18} strokeWidth={2.5} />
+    <span className="font-bold font-sans uppercase tracking-wide text-sm">{name}</span>
   </motion.div>
 );
 
-const Tag = ({ text }) => (
-  <span className="bg-[#E6F9C9] px-3 py-1 rounded-full border-2 border-black text-sm font-bold whitespace-nowrap hover:bg-[#DFFF00] transition-colors cursor-default">
-    {text}
-  </span>
-);
-
 // --- Main About Component ---
-
 export default function AboutSection() {
   return (
-    <section id="about" className="relative w-full py-24 bg-white border-b-2 border-black font-sans overflow-hidden">
+    <section id="about" className="relative w-full py-24 md:py-32 bg-[#fafafa] overflow-hidden font-sans border-b-2 border-black">
 
-      {/* Background Decoration (Abstract Grid) */}
-      <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
+      {/* Background Decor */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-[url('https://www.transparenttextures.com/patterns/graphy.png')] opacity-10 pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="max-w-4xl mx-auto px-6 relative z-10 text-center">
 
-        {/* Section Header */}
+        {/* 1. Minimal Headline */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mb-16"
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          className="mb-12"
         >
-          <div className="inline-block bg-[#111] text-[#DFFF00] px-4 py-2 text-lg font-bold uppercase transform -rotate-2 border-2 border-transparent shadow-[4px_4px_0px_0px_#DFFF00] mb-4">
+          <div className="inline-block border-2 border-black px-4 py-1 rounded-full text-xs font-black uppercase tracking-widest bg-[#DFFF00] mb-6 shadow-[4px_4px_0px_0px_#000]">
             Who is Akash?
           </div>
-          <h2 className="text-5xl md:text-7xl font-black uppercase leading-none tracking-tighter">
-            Bridging Logic <br/>
-            <span className="text-transparent" style={{ WebkitTextStroke: '2px black' }}>& Creativity.</span>
+          <h2 className="text-4xl md:text-6xl font-black uppercase leading-tight text-black">
+            I Bring <span className="underline decoration-wavy decoration-[#DFFF00] underline-offset-8">Logic</span> To <br />
+            Product Chaos.
           </h2>
         </motion.div>
 
-        {/* The Bento Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+        {/* 2. The Bio Narrative */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="mb-16"
+        >
+          <p className="text-lg md:text-xl font-medium leading-relaxed text-gray-800 max-w-2xl mx-auto">
+            I am an <b>Assistant Product Manager</b> with a background in Mathematics. I don't just guess—I calculate. [cite: 1, 33]
+          </p>
+          <br />
+          <p className="text-base md:text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto">
+            Currently driving operational excellence at <b>Masters' Union</b>, I specialize in reducing friction. Whether it's cutting grading time by 60% with AI or building N8N automations to save hours of manual effort, my goal is always the same: <b>High Impact, Low Drag.</b> [cite: 10, 25, 18]
+          </p>
+        </motion.div>
 
-          {/* 1. Main Bio (Spans 8 columns) */}
-          <div className="md:col-span-8">
-            <BentoCard title="The Narrative" icon={FiTerminal} className="h-full bg-[#f8f8f8]">
-              <p className="mb-4 text-lg">
-                I am an <span className="font-black bg-[#DFFF00] px-1">Assistant Product Manager</span> currently driving operational excellence at Masters' Union.
-                With a background in <span className="font-bold underline decoration-wavy decoration-[#DFFF00]">Mathematics</span>, I don't just guess—I calculate.
-              </p>
-              <p className="text-lg">
-                I specialize in turning chaotic workflows into streamlined products. Whether it's reducing grading time by 60% with AI or building N8N automations to cut manual effort, I focus on <b>high-impact</b> outcomes.
-              </p>
-            </BentoCard>
+        {/* 3. Static Tech Stack (Replaces Marquee) */}
+        <div>
+          <h3 className="text-sm font-bold uppercase tracking-widest text-gray-400 mb-8">My Toolkit</h3>
+
+          <div className="flex flex-wrap justify-center gap-4">
+            {skills.map((skill, index) => (
+              <SkillPill key={skill.name} name={skill.name} icon={skill.icon} index={index} />
+            ))}
           </div>
-
-          {/* 2. Key Stats (Spans 4 columns) */}
-          <div className="md:col-span-4">
-            <BentoCard title="Impact" icon={FaAward} className="bg-[#E6F9C9] h-full">
-              <ul className="space-y-4">
-                <li className="flex items-start gap-2">
-                  <span className="text-2xl">🏆</span>
-                  <span><strong>2x Director's Awards</strong> for Product Innovation.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-2xl">🚀</span>
-                  <span><strong>80% Reduction</strong> in engineering rework via clear PRDs.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-2xl">📉</span>
-                  <span><strong>40% Efficiency Boost</strong> through Automation.</span>
-                </li>
-              </ul>
-            </BentoCard>
-          </div>
-
-          {/* 3. Tech Stack (Spans 6 columns) */}
-          <div className="md:col-span-6">
-            <BentoCard title="My Arsenal" icon={FaMicrochip}>
-              <div className="flex flex-wrap gap-2">
-                <Tag text="Figma" />
-                <Tag text="Notion" />
-                <Tag text="SQL" />
-                <Tag text="Power BI" />
-                <Tag text="N8N Automation" />
-                <Tag text="Jira" />
-                <Tag text="Miro" />
-                <Tag text="Google Analytics" />
-                <Tag text="ClickUp" />
-              </div>
-            </BentoCard>
-          </div>
-
-          {/* 4. Education (Spans 6 columns) */}
-          <div className="md:col-span-6">
-            <BentoCard title="Education" icon={FaBookOpen}>
-              <div className="space-y-4">
-                <div className="border-l-4 border-black pl-4">
-                  <h4 className="font-bold text-lg">PGDM (MBA)</h4>
-                  <p className="text-sm text-gray-600">Management Development Institute (2021-2023)</p>
-                </div>
-                <div className="border-l-4 border-[#DFFF00] pl-4">
-                  <h4 className="font-bold text-lg">B.Sc Mathematics</h4>
-                  <p className="text-sm text-gray-600">Vardhaman College (2016-2019)</p>
-                </div>
-              </div>
-            </BentoCard>
-          </div>
-
         </div>
+
       </div>
     </section>
   );
