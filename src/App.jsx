@@ -3,6 +3,7 @@ import Nav from './components/Nav'
 import Hero from './components/Hero'
 import About from './components/About'
 import Projects from './components/Projects'
+import Playground from './components/Playground'
 import Experience from './components/Experience'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
@@ -14,6 +15,7 @@ function App() {
       <Hero />
       <About />
       <Projects />
+      <Playground />
       <Experience />
       <Footer />
       <ScrollToTop />
