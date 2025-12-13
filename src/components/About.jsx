@@ -73,7 +73,7 @@ const AwardCard = () => (
         className="flex-1 flex items-center justify-center"
       >
         <img
-          src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=400&auto=format&fit=crop"
+          src="https://lh3.googleusercontent.com/d/1TGytu3BV64C8bmBzpbPqUpqj3JZPN-9O"
           alt="Receiving Award"
           className="w-full h-full object-cover rounded-2xl border-2 border-black"
         />
