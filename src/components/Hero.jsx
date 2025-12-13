@@ -1,40 +1,84 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { FaLinkedin, FaGithub, FaStar } from 'react-icons/fa';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FaLinkedin, FaGithub, FaStar, FaBars, FaTimes } from 'react-icons/fa';
 import { MdMail } from 'react-icons/md';
 import { FiArrowUpRight } from 'react-icons/fi';
 
 // --- Components ---
 
-const Navbar = () => (
-  <motion.nav
-    initial={{ y: -100 }}
-    animate={{ y: 0 }}
-    transition={{ type: "spring", stiffness: 100 }}
-    className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4"
-  >
-    <div className="flex items-center justify-between bg-white border-2 border-black px-6 py-3 rounded-full shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] w-full max-w-4xl">
-      <div className="text-xl font-black font-sans tracking-tighter">Akash.</div>
+const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-      <div className="hidden md:flex gap-8 font-medium">
-        {[
-          { name: 'Home', href: '#' },
-          { name: 'About', href: '#about' },
-          { name: 'Projects', href: '#projects' },
-          { name: 'Experience', href: '#experience' }
-        ].map((item) => (
-          <a key={item.name} href={item.href} className="hover:underline decoration-2 underline-offset-4">
-            {item.name}
+  return (
+    <motion.nav
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ type: "spring", stiffness: 100 }}
+      className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4"
+    >
+      <div className="flex items-center justify-between bg-white border-2 border-black px-6 py-3 rounded-full shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] w-full max-w-4xl">
+        <div className="text-xl font-black font-sans tracking-tighter">Akash.</div>
+
+        <div className="hidden md:flex gap-8 font-medium">
+          {[
+            { name: 'Home', href: '#' },
+            { name: 'About', href: '#about' },
+            { name: 'Projects', href: '#projects' },
+            { name: 'Experience', href: '#experience' }
+          ].map((item) => (
+            <a key={item.name} href={item.href} className="hover:underline decoration-2 underline-offset-4">
+              {item.name}
+            </a>
+          ))}
+        </div>
+
+        {/* Mobile Menu Button */}
+        <div className="flex items-center gap-4">
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="md:hidden bg-[#DFFF00] border-2 border-black p-3 rounded-full hover:translate-y-[-2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all min-w-[44px] min-h-[44px] flex items-center justify-center"
+          >
+            {isMenuOpen ? <FaTimes size={16} /> : <FaBars size={16} />}
+          </button>
+
+          <a href="#contact" className="bg-[#DFFF00] hover:translate-y-[-2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all border-2 border-black px-4 py-3 md:px-6 md:py-2 rounded-full font-bold flex items-center gap-2 text-sm md:text-base min-h-[44px] flex items-center">
+            Let's Talk <FiArrowUpRight size={18} />
           </a>
-        ))}
+        </div>
       </div>
 
-      <a href="#contact" className="bg-[#DFFF00] hover:translate-y-[-2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all border-2 border-black px-6 py-2 rounded-full font-bold flex items-center gap-2">
-        Let's Talk <FiArrowUpRight size={18} />
-      </a>
-    </div>
-  </motion.nav>
-);
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="absolute top-full mt-4 left-4 right-4 bg-white border-2 border-black rounded-2xl shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] md:hidden overflow-hidden"
+          >
+            <div className="p-4 space-y-2">
+              {[
+                { name: 'Home', href: '#' },
+                { name: 'About', href: '#about' },
+                { name: 'Projects', href: '#projects' },
+                { name: 'Experience', href: '#experience' }
+              ].map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="block py-3 px-4 rounded-lg hover:bg-[#DFFF00] font-medium transition-colors"
+                >
+                  {item.name}
+                </a>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.nav>
+  );
+};
 
 const SocialButton = ({ Icon, href }) => (
   <motion.a 
@@ -70,14 +114,14 @@ const RotatingBadge = () => (
 const Marquee = () => (
   <>
     {/* First Marquee */}
-    <div className="absolute bottom-8 left-0 right-0 z-40 bg-[#111] text-[#DFFF00] border-t-2 border-black py-3 rotate-[-4deg] scale-105 origin-bottom-left overflow-hidden whitespace-nowrap">
+    <div className="absolute bottom-8 left-0 right-0 z-40 bg-[#111] text-[#DFFF00] border-t-2 border-black py-2 md:py-3 rotate-[-4deg] scale-105 origin-bottom-left overflow-hidden whitespace-nowrap">
       <motion.div
         animate={{ x: [0, -2000] }}
         transition={{ repeat: Infinity, duration: 30, ease: "linear" }}
-        className="flex gap-8 text-lg font-black uppercase"
+        className="flex gap-4 md:gap-8 text-sm md:text-lg font-black uppercase"
       >
         {[...Array(6)].map((_, i) => (
-          <span key={i} className="flex items-center gap-8">
+          <span key={i} className="flex items-center gap-4 md:gap-8">
             Product Lifecycle Management (PLM) ✦ Vision & Strategy ✦ Roadmap Planning ✦ Wireframing ✦ User Experience (UX) ✦ User Feedback Loops ✦ Agile Methodologies ✦ Sprint Planning ✦ Documentation (PRDs, Changelogs) ✦
           </span>
         ))}
@@ -85,14 +129,14 @@ const Marquee = () => (
     </div>
 
     {/* Second Marquee */}
-    <div className="absolute bottom-24 left-0 right-0 z-40 bg-[#DFFF00] text-[#111] border-t-2 border-black py-3 rotate-[4deg] scale-105 origin-bottom-left overflow-hidden whitespace-nowrap">
+    <div className="absolute bottom-20 md:bottom-24 left-0 right-0 z-40 bg-[#DFFF00] text-[#111] border-t-2 border-black py-2 md:py-3 rotate-[4deg] scale-105 origin-bottom-left overflow-hidden whitespace-nowrap">
       <motion.div
         animate={{ x: [0, -2000] }}
         transition={{ repeat: Infinity, duration: 25, ease: "linear" }}
-        className="flex gap-8 text-lg font-black uppercase"
+        className="flex gap-4 md:gap-8 text-sm md:text-lg font-black uppercase"
       >
         {[...Array(6)].map((_, i) => (
-          <span key={i} className="flex items-center gap-8">
+          <span key={i} className="flex items-center gap-4 md:gap-8">
             Power BI ✦ MS Excel ✦ Google Analytics ✦ Figma ✦ Miro ✦ Notion ✦ Loom ✦ Scribe ✦ Jira ✦ ClickUp ✦ N8N (Automation Workflows) ✦ Storylane ✦
           </span>
         ))}
@@ -165,19 +209,19 @@ export default function HeroSection() {
         </div>
 
         {/* Right Stats Card */}
-        <motion.div 
+        <motion.div
           initial={{ x: 100, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ delay: 0.8 }}
-          className="absolute right-4 md:right-16 top-1/2 z-40 bg-white p-4 pr-8 rounded-xl border-2 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] flex items-center gap-4 max-w-[250px]"
+          className="absolute right-2 md:right-16 top-1/2 z-40 bg-white p-3 md:p-4 pr-4 md:pr-8 rounded-xl border-2 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] flex items-center gap-2 md:gap-4 max-w-[200px] md:max-w-[250px]"
         >
-          <div className="flex -space-x-3">
+          <div className="flex -space-x-2 md:-space-x-3">
              {[1,2,3].map(i => (
-               <div key={i} className="w-10 h-10 rounded-full bg-gray-200 border-2 border-white ring-1 ring-black" />
+               <div key={i} className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gray-200 border-2 border-white ring-1 ring-black" />
              ))}
           </div>
           <div>
-            <div className="text-xl font-black">100+</div>
+            <div className="text-lg md:text-xl font-black">100+</div>
             <div className="text-xs font-bold text-gray-600">Features Shipped</div>
           </div>
         </motion.div>

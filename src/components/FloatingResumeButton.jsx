@@ -56,18 +56,20 @@ export default function FloatingResumeButton() {
               onClick={(e) => e.stopPropagation()}
               className="relative w-full max-w-4xl max-h-[90vh] overflow-hidden bg-white border-2 border-black rounded-3xl shadow-[8px_8px_0px_0px_#000]"
             >
-              {/* Close Button */}
-              <button
-                onClick={() => setIsModalOpen(false)}
-                className="absolute top-4 right-4 z-10 bg-white border-2 border-black rounded-full p-2 hover:bg-[#DFFF00] transition-colors shadow-[4px_4px_0px_0px_#000]"
-              >
-                <FiX size={24} />
-              </button>
+              {/* Header with Close Button */}
+              <div className="bg-white rounded-t-3xl p-4 border-b-2 border-black">
+                <button
+                  onClick={() => setIsModalOpen(false)}
+                  className="float-right bg-white border-2 border-black rounded-full p-2 hover:bg-[#DFFF00] transition-colors shadow-[4px_4px_0px_0px_#000] min-w-[44px] min-h-[44px] flex items-center justify-center"
+                >
+                  <FiX size={24} />
+                </button>
+              </div>
 
               {/* Iframe */}
               <iframe
                 src="https://flowcv.com/resume/gemtfbcj41"
-                className="w-full h-[80vh] rounded-3xl"
+                className="w-full h-[calc(80vh-4rem)] rounded-b-3xl"
                 title="Resume"
               />
             </motion.div>

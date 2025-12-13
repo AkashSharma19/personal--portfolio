@@ -280,39 +280,10 @@ export default function ExperienceSection() {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
-                className="relative bg-white w-full max-w-5xl h-[600px] rounded-3xl border-4 border-black shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] overflow-hidden flex flex-col md:flex-row font-sans"
+                className="relative bg-white w-full max-w-5xl h-[80vh] md:h-[600px] rounded-3xl border-4 border-black shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] overflow-hidden flex flex-col font-sans"
               >
 
-                {/* LEFT SIDEBAR: Career Navigation */}
-                <div className="w-full md:w-1/3 bg-gray-50 border-r-2 border-black p-6 overflow-y-auto">
-                  <h3 className="text-xs font-black uppercase tracking-widest text-gray-400 mb-6">Career Timeline</h3>
-                  <div className="space-y-4">
-                    {Object.entries(groupedData).map(([company, roles]) => (
-                      <div key={company}>
-                        <div className="text-xs font-bold uppercase mb-2 opacity-70">{company}</div>
-                        <div className="space-y-2 ml-4">
-                          {roles.map((role) => (
-                            <button
-                              key={role.id}
-                              onClick={() => setSelectedItem(role)}
-                              className={`w-full text-left p-3 rounded-xl border-2 transition-all group ${
-                                selectedItem.id === role.id
-                                  ? 'bg-black border-black text-white shadow-[4px_4px_0px_0px_#DFFF00]'
-                                  : 'bg-white border-transparent hover:border-black hover:bg-white text-gray-500 hover:text-black'
-                              }`}
-                            >
-                              <div className="font-black leading-tight text-sm">
-                                {role.role}
-                              </div>
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* RIGHT CONTENT: Role Details */}
+                {/* CONTENT: Role Details */}
                 <div className="flex-1 p-8 md:p-10 flex flex-col overflow-y-auto relative bg-white">
 
                   {/* Close Button */}
