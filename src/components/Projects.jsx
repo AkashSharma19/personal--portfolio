@@ -115,8 +115,8 @@ const ProjectModal = ({ project, onClose, allProjects, onSelectProject }) => {
               <div className="inline-block px-3 py-1 bg-[#DFFF00] border-2 border-black rounded-lg text-xs font-bold uppercase tracking-widest mb-3">
                 {project.category}
               </div>
-              <h2 className="text-4xl font-black uppercase leading-none mb-4">{project.title}</h2>
-              <p className="text-lg text-gray-600 leading-relaxed max-w-2xl">
+              <h2 className="text-3xl font-black uppercase leading-none mb-4">{project.title}</h2>
+              <p className="text-base text-gray-600 leading-relaxed max-w-2xl">
                 {project.longDescription}
               </p>
             </div>
@@ -134,7 +134,7 @@ const ProjectModal = ({ project, onClose, allProjects, onSelectProject }) => {
 
           {/* Tech Stack Tags */}
           <div className="mb-10">
-            <h3 className="flex items-center gap-2 text-lg font-bold uppercase mb-4">
+            <h3 className="flex items-center gap-2 text-base font-bold uppercase mb-4">
               <Code size={20} /> Tech Stack
             </h3>
             <div className="flex flex-wrap gap-3">
@@ -148,7 +148,7 @@ const ProjectModal = ({ project, onClose, allProjects, onSelectProject }) => {
 
           {/* Gallery Grid */}
           <div>
-            <h3 className="flex items-center gap-2 text-lg font-bold uppercase mb-4">
+            <h3 className="flex items-center gap-2 text-base font-bold uppercase mb-4">
               <Layers size={20} /> Gallery
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -187,7 +187,7 @@ export default function ProjectsSection() {
           <span className="text-[#65a30d] font-bold tracking-wider uppercase text-sm mb-2 block">
             Work Projects
           </span>
-          <h2 className="text-4xl md:text-6xl font-black text-black capitalize leading-tight">
+          <h2 className="text-3xl md:text-5xl font-black text-black capitalize leading-tight">
             We Are Creating Something <br />
             <span className="relative inline-block">
                Different Layout
@@ -220,7 +220,7 @@ export default function ProjectsSection() {
               <div className="absolute bottom-6 left-6 right-6">
                 <div className={`flex items-center justify-between p-4 rounded-xl border-2 border-black transition-colors duration-300 ${project.theme === 'highlight' ? 'bg-[#DFFF00]' : 'bg-white'}`}>
                   <div>
-                    <h3 className="font-bold text-lg leading-tight font-sans">{project.title}</h3>
+                    <h3 className="font-bold text-base leading-tight font-sans">{project.title}</h3>
                     <p className="text-xs font-semibold uppercase tracking-wider opacity-60 mt-1">{project.category}</p>
                   </div>
                   <div className={`w-10 h-10 rounded-full border-2 border-black flex items-center justify-center transition-transform group-hover:rotate-45 ${project.theme === 'highlight' ? 'bg-black text-[#DFFF00]' : 'bg-[#DFFF00] text-black'}`}>

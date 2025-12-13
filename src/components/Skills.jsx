@@ -25,7 +25,7 @@ const Skills = () => {
   return (
     <section id="skills" ref={skillsRef} className="section-padding bg-white dark:bg-gray-800">
       <div className="container-max">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 dark:text-white mb-12">Skills & Toolkit</h2>
+        <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-900 dark:text-white mb-12">Skills & Toolkit</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {Object.entries(skills).map(([category, data]) => {
             const Icon = data.icon

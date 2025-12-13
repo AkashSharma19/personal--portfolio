@@ -17,7 +17,7 @@ const AwardCard = () => (
       <div className="inline-flex items-center gap-2 bg-black text-[#DFFF00] px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4">
         <Trophy size={14} /> Recognition
       </div>
-      <h3 className="text-3xl md:text-4xl font-black uppercase leading-none mb-2">
+      <h3 className="text-2xl md:text-3xl font-black uppercase leading-none mb-2">
         Director's <br/> Award
       </h3>
       <p className="font-bold text-black/80">Received 2x for Innovation.</p>
@@ -49,7 +49,7 @@ const StatCard = ({ icon: Icon, value, label, color = "bg-white" }) => (
       <Icon size={24} />
       <span className="text-xs font-black uppercase tracking-widest">{label}</span>
     </div>
-    <div className="text-5xl font-black tracking-tighter">{value}</div>
+    <div className="text-4xl font-black tracking-tighter">{value}</div>
   </motion.div>
 );
 
@@ -87,7 +87,7 @@ export default function AboutSection() {
               <div className="inline-block border-2 border-black px-4 py-1 rounded-full text-xs font-black uppercase tracking-widest bg-white mb-6 shadow-[4px_4px_0px_0px_#000]">
                 Who is Akash?
               </div>
-              <h2 className="text-5xl md:text-7xl font-black uppercase leading-[0.9]">
+              <h2 className="text-4xl md:text-6xl font-black uppercase leading-[0.9]">
                 I Don't Just Guess. <br/>
                 <span className="text-transparent" style={{ WebkitTextStroke: '2px black' }}>I Calculate.</span>
               </h2>
@@ -99,7 +99,7 @@ export default function AboutSection() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="text-xl leading-relaxed font-medium text-gray-800"
+              className="text-lg leading-relaxed font-medium text-gray-800"
             >
               I am an <b>Assistant Product Manager</b> with a background in Mathematics. Currently driving operational excellence at <b>Masters' Union</b>, I specialize in reducing friction. 
               <br/><br/>
@@ -120,7 +120,7 @@ export default function AboutSection() {
                     className="flex items-center gap-2 px-5 py-3 border-2 border-black rounded-full bg-white hover:bg-[#E6F9C9] transition-colors cursor-default"
                   >
                     <skill.icon size={18} />
-                    <span className="font-bold text-sm uppercase">{skill.name}</span>
+                    <span className="font-bold text-xs uppercase">{skill.name}</span>
                   </motion.div>
                 ))}
               </div>

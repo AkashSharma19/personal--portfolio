@@ -7,15 +7,15 @@ import { FiArrowUpRight } from 'react-icons/fi';
 // --- Components ---
 
 const Navbar = () => (
-  <motion.nav 
+  <motion.nav
     initial={{ y: -100 }}
     animate={{ y: 0 }}
     transition={{ type: "spring", stiffness: 100 }}
     className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4"
   >
     <div className="flex items-center justify-between bg-white border-2 border-black px-6 py-3 rounded-full shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] w-full max-w-4xl">
-      <div className="text-2xl font-black font-sans tracking-tighter">Akash.</div>
-      
+      <div className="text-xl font-black font-sans tracking-tighter">Akash.</div>
+
       <div className="hidden md:flex gap-8 font-medium">
         {[
           { name: 'Home', href: '#' },
@@ -74,7 +74,7 @@ const Marquee = () => (
       <motion.div
         animate={{ x: [0, -2000] }}
         transition={{ repeat: Infinity, duration: 30, ease: "linear" }}
-        className="flex gap-8 text-xl font-black uppercase"
+        className="flex gap-8 text-lg font-black uppercase"
       >
         {[...Array(6)].map((_, i) => (
           <span key={i} className="flex items-center gap-8">
@@ -89,7 +89,7 @@ const Marquee = () => (
       <motion.div
         animate={{ x: [0, -2000] }}
         transition={{ repeat: Infinity, duration: 25, ease: "linear" }}
-        className="flex gap-8 text-xl font-black uppercase"
+        className="flex gap-8 text-lg font-black uppercase"
       >
         {[...Array(6)].map((_, i) => (
           <span key={i} className="flex items-center gap-8">
@@ -113,7 +113,7 @@ export default function HeroSection() {
         
         {/* Layer 1: Background Massive Text */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center z-0 select-none pointer-events-none">
-          <h1 className="text-[12vw] leading-none font-black text-transparent" style={{ WebkitTextStroke: '2px black', opacity: 0.1 }}>
+          <h1 className="text-[10vw] leading-none font-black text-transparent" style={{ WebkitTextStroke: '2px black', opacity: 0.1 }}>
             PRODUCT
             <br />
             MANAGER
@@ -144,7 +144,7 @@ export default function HeroSection() {
           style={{ borderRadius: '60% 40% 30% 70% / 60% 30% 70% 40%' }}
         >
           <div className="text-center">
-            <h2 className="text-3xl md:text-5xl font-black leading-tight">AKASH<br/>SHARMA</h2>
+            <h2 className="text-2xl md:text-4xl font-black leading-tight">AKASH<br/>SHARMA</h2>
           </div>
         </motion.div>
 
@@ -177,7 +177,7 @@ export default function HeroSection() {
              ))}
           </div>
           <div>
-            <div className="text-2xl font-black">100+</div>
+            <div className="text-xl font-black">100+</div>
             <div className="text-xs font-bold text-gray-600">Features Shipped</div>
           </div>
         </motion.div>

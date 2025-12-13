@@ -11,7 +11,6 @@ import FloatingResumeButton from './components/FloatingResumeButton'
 function App() {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
-      <Nav />
       <Hero />
       <About />
       <Projects />

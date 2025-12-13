@@ -149,7 +149,7 @@ const InfoCard = ({ item, onClick }) => {
 
       {/* Content */}
       <div>
-        <h3 className="text-xl font-black font-sans leading-tight mb-1">{item.company}</h3>
+        <h3 className="text-lg font-black font-sans leading-tight mb-1">{item.company}</h3>
         <p className="font-bold text-sm opacity-80 mb-3">{item.role}</p>
         <p className="text-sm font-medium leading-relaxed opacity-70">
           {item.desc}
@@ -183,7 +183,7 @@ export default function ExperienceSection() {
             <span className="text-[#65a30d] font-bold tracking-wider uppercase text-sm mb-2 block">
               Working Experience
             </span>
-            <h2 className="text-4xl md:text-5xl font-black leading-tight max-w-xl">
+            <h2 className="text-3xl md:text-4xl font-black leading-tight max-w-xl">
               We Provide 5 Years Experience For Service.
             </h2>
           </div>
@@ -280,9 +280,9 @@ export default function ExperienceSection() {
                       <div className="inline-block px-3 py-1 bg-[#DFFF00] border-2 border-black rounded-lg text-xs font-bold uppercase tracking-widest mb-3">
                         {selectedItem.type}
                       </div>
-                      <h2 className="text-4xl font-black uppercase leading-none mb-2">{selectedItem.company}</h2>
-                      <p className="text-2xl font-bold opacity-80 mb-4">{selectedItem.role}</p>
-                      <p className="text-lg text-gray-600 leading-relaxed max-w-2xl">
+                      <h2 className="text-3xl font-black uppercase leading-none mb-2">{selectedItem.company}</h2>
+                      <p className="text-xl font-bold opacity-80 mb-4">{selectedItem.role}</p>
+                      <p className="text-base text-gray-600 leading-relaxed max-w-2xl">
                         {selectedItem.desc}
                       </p>
                     </div>
@@ -291,7 +291,7 @@ export default function ExperienceSection() {
                   {/* Achievements */}
                   {selectedItem.achievements && (
                     <div className="mb-10">
-                      <h3 className="flex items-center gap-2 text-lg font-bold uppercase mb-4">
+                      <h3 className="flex items-center gap-2 text-base font-bold uppercase mb-4">
                         Key Achievements
                       </h3>
                       <ul className="space-y-3">

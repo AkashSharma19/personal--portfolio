@@ -39,7 +39,7 @@ export default function Footer() {
           </div>
 
           {/* Headline */}
-          <h2 className="text-4xl md:text-6xl font-black leading-tight mb-8">
+          <h2 className="text-3xl md:text-5xl font-black leading-tight mb-8">
             Let's Work <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#DFFF00] to-white">
               Together.
@@ -50,21 +50,21 @@ export default function Footer() {
           <div className="space-y-6 mb-12">
              <div className="flex flex-col gap-1">
                <label className="text-xs font-bold text-gray-500 uppercase">Email Me</label>
-               <a href="mailto:sharmaakash4299@gmail.com" className="text-lg md:text-xl font-bold hover:text-[#DFFF00] transition-colors flex items-center gap-3">
+               <a href="mailto:sharmaakash4299@gmail.com" className="text-base md:text-lg font-bold hover:text-[#DFFF00] transition-colors flex items-center gap-3">
                  <FiMail size={24} className="text-[#DFFF00]" /> sharmaakash4299@gmail.com
                </a>
              </div>
 
              <div className="flex flex-col gap-1">
                <label className="text-xs font-bold text-gray-500 uppercase">Call Me</label>
-               <a href="tel:+918171846361" className="text-lg md:text-xl font-bold hover:text-[#DFFF00] transition-colors flex items-center gap-3">
+               <a href="tel:+918171846361" className="text-base md:text-lg font-bold hover:text-[#DFFF00] transition-colors flex items-center gap-3">
                  <FiPhone size={24} className="text-[#DFFF00]" /> +91 8171846361
                </a>
              </div>
 
              <div className="flex flex-col gap-1">
                <label className="text-xs font-bold text-gray-500 uppercase">Location</label>
-               <p className="text-lg md:text-xl font-bold flex items-center gap-3">
+               <p className="text-base md:text-lg font-bold flex items-center gap-3">
                  <FiMapPin size={24} className="text-[#DFFF00]" /> Gurugram, India
                </p>
              </div>
@@ -91,7 +91,7 @@ export default function Footer() {
 
            {/* Form Container */}
            <div className="bg-[#1A1A1A] p-6 rounded-2xl border border-white/10 shadow-2xl relative z-10">
-             <h3 className="text-xl font-bold mb-6">Input Form</h3>
+             <h3 className="text-lg font-bold mb-6">Input Form</h3>
 
              <form className="space-y-4">
                {/* Name Row */}
