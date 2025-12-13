@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaBriefcase, FaGraduationCap } from 'react-icons/fa';
 import { FiMapPin, FiCalendar, FiArrowRight, FiX } from 'react-icons/fi';
@@ -170,6 +170,18 @@ const InfoCard = ({ item, onClick }) => {
 export default function ExperienceSection() {
   const [activeTab, setActiveTab] = useState('experience'); // 'experience' | 'education'
   const [selectedItem, setSelectedItem] = useState(null);
+
+  // Prevent background scroll when modal is open
+  useEffect(() => {
+    if (selectedItem) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [selectedItem]);
   
   const data = activeTab === 'experience' ? experienceData : educationData;
 

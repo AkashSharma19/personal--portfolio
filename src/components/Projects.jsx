@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight, CheckCircle2, X, Layers, Code, Globe } from 'lucide-react';
 
@@ -173,6 +173,18 @@ const ProjectModal = ({ project, onClose, allProjects, onSelectProject }) => {
 export default function ProjectsSection() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [showAllProjects, setShowAllProjects] = useState(false);
+
+  // Prevent background scroll when modal is open
+  useEffect(() => {
+    if (selectedProject) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [selectedProject]);
 
   return (
     <section id="projects" className="relative w-full py-24 bg-white font-sans overflow-hidden">
