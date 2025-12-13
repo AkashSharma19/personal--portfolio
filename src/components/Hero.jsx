@@ -17,16 +17,21 @@ const Navbar = () => (
       <div className="text-2xl font-black font-sans tracking-tighter">Akash.</div>
       
       <div className="hidden md:flex gap-8 font-medium">
-        {['Home', 'About', 'Projects', 'Resume'].map((item) => (
-          <a key={item} href={`#${item.toLowerCase()}`} className="hover:underline decoration-2 underline-offset-4">
-            {item}
+        {[
+          { name: 'Home', href: '#' },
+          { name: 'About', href: '#about' },
+          { name: 'Projects', href: '#projects' },
+          { name: 'Experience', href: '#experience' }
+        ].map((item) => (
+          <a key={item.name} href={item.href} className="hover:underline decoration-2 underline-offset-4">
+            {item.name}
           </a>
         ))}
       </div>
 
-      <button className="bg-[#DFFF00] hover:translate-y-[-2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all border-2 border-black px-6 py-2 rounded-full font-bold flex items-center gap-2">
+      <a href="#contact" className="bg-[#DFFF00] hover:translate-y-[-2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all border-2 border-black px-6 py-2 rounded-full font-bold flex items-center gap-2">
         Let's Talk <FiArrowUpRight size={18} />
-      </button>
+      </a>
     </div>
   </motion.nav>
 );
@@ -63,19 +68,37 @@ const RotatingBadge = () => (
 );
 
 const Marquee = () => (
-  <div className="absolute bottom-0 left-0 right-0 z-40 bg-[#111] text-[#DFFF00] border-t-2 border-black py-4 rotate-[-2deg] scale-105 origin-bottom-left overflow-hidden whitespace-nowrap">
-    <motion.div 
-      animate={{ x: [0, -1000] }}
-      transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
-      className="flex gap-8 text-3xl font-black uppercase"
-    >
-      {[...Array(4)].map((_, i) => (
-        <span key={i} className="flex items-center gap-8">
-          Product Lifecycle Management ✦ Data Analytics (Power BI/SQL) ✦ EdTech Specialist ✦ Automation (N8N) ✦
-        </span>
-      ))}
-    </motion.div>
-  </div>
+  <>
+    {/* First Marquee */}
+    <div className="absolute bottom-8 left-0 right-0 z-40 bg-[#111] text-[#DFFF00] border-t-2 border-black py-3 rotate-[-4deg] scale-105 origin-bottom-left overflow-hidden whitespace-nowrap">
+      <motion.div
+        animate={{ x: [0, -2000] }}
+        transition={{ repeat: Infinity, duration: 30, ease: "linear" }}
+        className="flex gap-8 text-xl font-black uppercase"
+      >
+        {[...Array(6)].map((_, i) => (
+          <span key={i} className="flex items-center gap-8">
+            Product Lifecycle Management (PLM) ✦ Vision & Strategy ✦ Roadmap Planning ✦ Wireframing ✦ User Experience (UX) ✦ User Feedback Loops ✦ Agile Methodologies ✦ Sprint Planning ✦ Documentation (PRDs, Changelogs) ✦
+          </span>
+        ))}
+      </motion.div>
+    </div>
+
+    {/* Second Marquee */}
+    <div className="absolute bottom-24 left-0 right-0 z-40 bg-[#DFFF00] text-[#111] border-t-2 border-black py-3 rotate-[4deg] scale-105 origin-bottom-left overflow-hidden whitespace-nowrap">
+      <motion.div
+        animate={{ x: [0, -2000] }}
+        transition={{ repeat: Infinity, duration: 25, ease: "linear" }}
+        className="flex gap-8 text-xl font-black uppercase"
+      >
+        {[...Array(6)].map((_, i) => (
+          <span key={i} className="flex items-center gap-8">
+            Power BI ✦ MS Excel ✦ Google Analytics ✦ Figma ✦ Miro ✦ Notion ✦ Loom ✦ Scribe ✦ Jira ✦ ClickUp ✦ N8N (Automation Workflows) ✦ Storylane ✦
+          </span>
+        ))}
+      </motion.div>
+    </div>
+  </>
 );
 
 // --- Main Hero Component ---

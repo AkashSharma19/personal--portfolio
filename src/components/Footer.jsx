@@ -22,7 +22,7 @@ const InputField = ({ placeholder, type = "text", className = "" }) => (
 
 export default function Footer() {
   return (
-    <footer className="relative w-full bg-[#050505] text-white py-24 overflow-hidden font-sans border-t-2 border-black">
+    <footer id="contact" className="relative w-full bg-[#050505] text-white py-24 overflow-hidden font-sans border-t-2 border-black">
 
       {/* Background Decor: The Green Glow */}
       <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-[#DFFF00]/10 rounded-full blur-[120px] pointer-events-none -translate-x-1/2 -translate-y-1/2" />

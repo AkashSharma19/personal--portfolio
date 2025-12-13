@@ -140,7 +140,7 @@ export default function ExperienceSection() {
   const data = activeTab === 'experience' ? experienceData : educationData;
 
   return (
-    <section className="w-full py-24 bg-[#fafafa] border-b-2 border-black font-sans">
+    <section id="experience" className="w-full py-24 bg-[#fafafa] border-b-2 border-black font-sans">
       <div className="max-w-7xl mx-auto px-6">
 
         {/* Header with Toggle */}
