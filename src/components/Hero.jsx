@@ -122,15 +122,15 @@ export default function HeroSection() {
 
         {/* Layer 2: Character Image Placeholder */}
         {/* REPLACE src with your actual transparent PNG */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 100 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           className="relative z-10 w-[80vw] md:w-[40vw] max-w-[500px]"
         >
-          <img 
-            src="https://placehold.co/600x800/png?text=Your+Transparent+Image+Here" 
-            alt="Akash Sharma" 
+          <img
+            src="/profile.png"
+            alt="Akash Sharma"
             className="w-full h-auto object-contain drop-shadow-2xl grayscale hover:grayscale-0 transition-all duration-500"
           />
         </motion.div>
