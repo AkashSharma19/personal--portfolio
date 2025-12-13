@@ -53,28 +53,12 @@ const CARDS = [
 
 export default function PrioritizationGame() {
   const [cards, setCards] = useState(CARDS);
-  const [history, setHistory] = useState([]); // To show feedback logs
   const [gameOver, setGameOver] = useState(false);
-  const [correctCount, setCorrectCount] = useState(0);
 
   // Handle Swipe/Button Action
   const handleDecision = (decision) => {
     if (cards.length === 0) return;
 
-    const currentCard = cards[0];
-    const isCorrect = currentCard.correct === decision;
-
-    if (isCorrect) {
-      setCorrectCount(prev => prev + 1);
-    }
-
-    // Add result to history
-    const resultLog = {
-      id: currentCard.id,
-      text: isCorrect ? `✅ ${currentCard.feedback}` : `❌ Oops. (Ideally you'd ${currentCard.correct} this)`,
-    };
-
-    setHistory((prev) => [resultLog, ...prev].slice(0, 2)); // Keep last 2 logs
     setCards((prev) => prev.slice(1)); // Remove top card
 
     if (cards.length === 1) {
@@ -84,9 +68,7 @@ export default function PrioritizationGame() {
 
   const resetGame = () => {
     setCards(CARDS);
-    setHistory([]);
     setGameOver(false);
-    setCorrectCount(0);
   };
 
   return (
@@ -184,10 +166,7 @@ export default function PrioritizationGame() {
               <div className="text-4xl mb-2">🎉</div>
               <h3 className="text-2xl font-black uppercase mb-2">Backlog Cleared!</h3>
               <p className="text-gray-700 font-medium mb-6">
-                {correctCount === 5 ? "Perfect! You are a prioritization master." :
-                 correctCount >= 4 ? "Great job! You cleared the backlog efficiently." :
-                 correctCount >= 3 ? "Backlog cleared, but with some questionable decisions." :
-                 "Backlog cleared... barely. Time to rethink your priorities."}
+                Backlog cleared! You've made your decisions.
               </p>
               <button
                 onClick={resetGame}
@@ -200,22 +179,6 @@ export default function PrioritizationGame() {
         </div>
 
 
-        {/* Feedback Logs (Toast Style) */}
-        <div className="mt-4 space-y-1 w-full max-w-sm min-h-[40px]">
-          <AnimatePresence>
-            {history.map((log, i) => (
-              <motion.div
-                key={i} // simple key for log list
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0 }}
-                className="text-xs font-bold text-gray-600 bg-gray-100 p-2 rounded border border-gray-300 text-center"
-              >
-                {log.text}
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </div>
 
       </div>
     </div>
