@@ -35,8 +35,8 @@ const SCENARIOS = [
     avatarColor: "bg-purple-500",
     message: "I had a dream about AI-powered toasters. We need to pivot the entire product to focus on Toaster-GPT. Thoughts?",
     options: [
-      { text: "That sounds... interesting? Let's do it!", score: -20, feedback: "Focus lost. Company bankrupt in 6 months." },
-      { text: "That's stupid. No.", score: -20, feedback: "You were fired immediately." },
+      { text: "That sounds... interesting? Let's do it!", score: -20, feedback: "Focus lost. Major strategic risks introduced." },
+      { text: "That's stupid. No.", score: -20, feedback: "Elon is outraged. Political capital severely damaged." },
       { text: "Interesting vision. Let's do a quick market validation test first?", score: 20, feedback: "Crisis averted with data. Good PMing." }
     ]
   }
