@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaBriefcase, FaGraduationCap } from 'react-icons/fa';
-import { FiMapPin, FiCalendar, FiArrowRight } from 'react-icons/fi';
+import { FiMapPin, FiCalendar, FiArrowRight, FiX } from 'react-icons/fi';
 
 // --- Data from Resume ---
 const experienceData = [
@@ -14,7 +14,14 @@ const experienceData = [
     date: "Apr 2025 - Present",
     desc: "Driving strategy and operational excellence. Leading high-impact product innovations and reducing friction in user journeys.",
     logo: FaBriefcase, // Placeholder icon
-    highlight: true // This mimics the green card in your reference
+    highlight: true, // This mimics the green card in your reference
+    achievements: [
+      "Driving strategy and operational excellence",
+      "Leading high-impact product innovations",
+      "Reducing friction in user journeys",
+      "Cutting grading time by 60% with AI",
+      "Building N8N automations to save hours of manual effort"
+    ]
   },
   {
     id: 2,
@@ -25,7 +32,13 @@ const experienceData = [
     date: "Jun 2023 - May 2025",
     desc: "Authored 100+ PRDs and prioritized features for LMS platforms. Reduced engineering rework by 80% through clear wireframing.",
     logo: FaBriefcase,
-    highlight: false
+    highlight: false,
+    achievements: [
+      "Authored 100+ Product Requirement Documents (PRDs)",
+      "Prioritized features for LMS platforms",
+      "Reduced engineering rework by 80% through clear wireframing",
+      "Conducted user research and data analysis"
+    ]
   },
   {
     id: 3,
@@ -36,7 +49,12 @@ const experienceData = [
     date: "Apr 2023 - Jun 2023",
     desc: "Built Power BI dashboards reducing KPI reporting time by 30%. Developed IT solutions that cut costs by 15%.",
     logo: FaBriefcase,
-    highlight: false
+    highlight: false,
+    achievements: [
+      "Built Power BI dashboards reducing KPI reporting time by 30%",
+      "Developed IT solutions that cut costs by 15%",
+      "Streamlined operational processes"
+    ]
   },
   {
     id: 4,
@@ -47,7 +65,13 @@ const experienceData = [
     date: "May 2022 - Jul 2022",
     desc: "Managed creative teams and secured partnerships with 15% of target workshops. Increased team productivity by 30%.",
     logo: FaBriefcase,
-    highlight: false
+    highlight: false,
+    achievements: [
+      "Managed creative teams",
+      "Secured partnerships with 15% of target workshops",
+      "Increased team productivity by 30%",
+      "Developed marketing strategies"
+    ]
   }
 ];
 
@@ -61,7 +85,11 @@ const educationData = [
     date: "2021 - 2023",
     desc: "Secured victories in three Inter-College competitions at IIM Rohtak, MDI Gurgaon, and IMT Ghaziabad.",
     logo: FaGraduationCap,
-    highlight: true
+    highlight: true,
+    achievements: [
+      "Secured victories in three Inter-College competitions at IIM Rohtak, MDI Gurgaon, and IMT Ghaziabad",
+      "Developed leadership and strategic thinking skills"
+    ]
   },
   {
     id: 2,
@@ -72,13 +100,17 @@ const educationData = [
     date: "2016 - 2019",
     desc: "Specialized in Mathematics. Built a strong foundation in analytical thinking and problem-solving.",
     logo: FaGraduationCap,
-    highlight: false
+    highlight: false,
+    achievements: [
+      "Specialized in Mathematics",
+      "Built a strong foundation in analytical thinking and problem-solving"
+    ]
   }
 ];
 
 // --- Components ---
 
-const InfoCard = ({ item }) => {
+const InfoCard = ({ item, onClick }) => {
   const isHighlight = item.highlight;
   const Icon = item.logo;
 
@@ -89,11 +121,12 @@ const InfoCard = ({ item }) => {
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.9 }}
       whileHover={{ y: -5 }}
+      onClick={onClick}
       className={`
         relative p-6 rounded-2xl border-2 border-black flex flex-col gap-4 h-full
         ${isHighlight
           ? 'bg-[#DFFF00] shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]'
-          : 'bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,0.1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:border-black transition-all'
+          : 'bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,0.1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:border-black transition-all cursor-pointer'
         }
       `}
     >
@@ -136,7 +169,8 @@ const InfoCard = ({ item }) => {
 
 export default function ExperienceSection() {
   const [activeTab, setActiveTab] = useState('experience'); // 'experience' | 'education'
-
+  const [selectedItem, setSelectedItem] = useState(null);
+  
   const data = activeTab === 'experience' ? experienceData : educationData;
 
   return (
@@ -188,10 +222,109 @@ export default function ExperienceSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <AnimatePresence mode="wait">
             {data.map((item) => (
-              <InfoCard key={item.id} item={item} />
+              <InfoCard key={item.id} item={item} onClick={() => setSelectedItem(item)} />
             ))}
           </AnimatePresence>
         </div>
+
+        {/* Modal for Details */}
+        <AnimatePresence>
+          {selectedItem && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
+              onClick={() => setSelectedItem(null)}
+            >
+              <motion.div
+                initial={{ scale: 0.9, y: 50 }}
+                animate={{ scale: 1, y: 0 }}
+                exit={{ scale: 0.9, y: 50 }}
+                onClick={(e) => e.stopPropagation()}
+                className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-white border-2 border-black rounded-3xl shadow-[8px_8px_0px_0px_#000]"
+              >
+                {/* Close Button - Top Right Corner */}
+                <button
+                  onClick={() => setSelectedItem(null)}
+                  className="absolute top-4 right-4 z-10 bg-white border-2 border-black rounded-full p-2 hover:bg-[#DFFF00] transition-colors shadow-[4px_4px_0px_0px_#000]"
+                >
+                  <FiX size={24} />
+                </button>
+
+                {/* Item Selector */}
+                {data && data.length > 1 && (
+                  <div className="p-4 border-b-2 border-black bg-gray-50">
+                    <div className="flex flex-wrap gap-2">
+                      {data.map((item) => (
+                        <button
+                          key={item.id}
+                          onClick={() => setSelectedItem(item)}
+                          className={`px-4 py-2 rounded-lg border-2 font-bold text-sm transition-all ${
+                            item.id === selectedItem.id
+                              ? 'bg-[#DFFF00] border-black'
+                              : 'bg-white border-gray-300 hover:border-black'
+                          }`}
+                        >
+                          {item.company} - {item.role}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Modal Content */}
+                <div className="p-8">
+                  <div className="flex flex-col md:flex-row gap-8 justify-between items-start mb-8">
+                    <div>
+                      <div className="inline-block px-3 py-1 bg-[#DFFF00] border-2 border-black rounded-lg text-xs font-bold uppercase tracking-widest mb-3">
+                        {selectedItem.type}
+                      </div>
+                      <h2 className="text-4xl font-black uppercase leading-none mb-2">{selectedItem.company}</h2>
+                      <p className="text-2xl font-bold opacity-80 mb-4">{selectedItem.role}</p>
+                      <p className="text-lg text-gray-600 leading-relaxed max-w-2xl">
+                        {selectedItem.desc}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Achievements */}
+                  {selectedItem.achievements && (
+                    <div className="mb-10">
+                      <h3 className="flex items-center gap-2 text-lg font-bold uppercase mb-4">
+                        Key Achievements
+                      </h3>
+                      <ul className="space-y-3">
+                        {selectedItem.achievements.map((ach, i) => (
+                          <li key={i} className="flex items-start gap-3">
+                            <div className="w-2 h-2 bg-black rounded-full mt-2 shrink-0"></div>
+                            <span className="text-gray-700 leading-relaxed">{ach}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                  {/* Location and Date */}
+                  <div className="flex flex-col md:flex-row gap-4 text-sm font-bold">
+                    <div className="flex items-center gap-2">
+                      <div className="bg-black text-white p-2 rounded-full">
+                        <FiMapPin size={14} />
+                      </div>
+                      {selectedItem.location}
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="bg-black text-white p-2 rounded-full">
+                        <FiCalendar size={14} />
+                      </div>
+                      {selectedItem.date}
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
       </div>
     </section>
