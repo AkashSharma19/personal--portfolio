@@ -1,76 +1,70 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Briefcase, GraduationCap, MapPin, Calendar, ArrowRight, X, Zap, BarChart3 } from 'lucide-react';
+import { Briefcase, GraduationCap, MapPin, Calendar, ArrowRight, X, Zap, BarChart3, TrendingUp, Users } from 'lucide-react';
+import ExperienceModal from './ExperienceModal';
 
 // --- Data from Resume ---
 const experienceData = [
   {
-    id: 1,
+    id: 'mu-apm',
     company: "Masters' Union",
     role: "Assistant Product Manager",
     location: "Gurugram, India",
     type: "Full Time",
-    date: "Apr 2025 - Present",
-    desc: "Driving strategy and operational excellence. Leading high-impact product innovations and reducing friction in user journeys.",
-    logo: Briefcase, // Placeholder icon
-    highlight: true, // This mimics the green card in your reference
+    period: "Apr 2024 - Present",
+    summary: "Spearheaded the digital transformation of the grading infrastructure, moving from manual spreadsheets to an AI-first ecosystem.",
+    logo: Briefcase,
+    highlight: true,
     metrics: [
-      { label: "Grading Efficiency", value: "+60%", desc: "Reduced grading time using AI automation." },
-      { label: "Manual Effort", value: "-20hrs", desc: "Saved per week via N8N workflows." },
-      { label: "User Adoption", value: "90%", desc: "For new LMS features shipped." },
-      { label: "Stakeholders", value: "15+", desc: "Managed cross-functional teams." }
+      { label: "Efficiency", value: "+60%", icon: Zap },
+      { label: "Wkly Savings", value: "20hrs", icon: TrendingUp },
+      { label: "Adoption", value: "90%", icon: Users }
     ],
-    stack: ["Jira", "Figma", "SQL", "N8N"]
+    bullets: [
+      "Led product strategy for the new LMS grading module.",
+      "Developed N8N workflows that automated 500+ student record updates weekly.",
+      "Managed 15+ stakeholders across Academic & Tech teams."
+    ],
+    skills: ["Product Strategy", "N8N", "SQL", "Jira"]
   },
   {
-    id: 2,
+    id: 'mu-pa',
     company: "Masters' Union",
     role: "Product Analyst",
     location: "Gurugram, India",
     type: "Full Time",
-    date: "Jun 2023 - May 2025",
-    desc: "Authored 100+ PRDs and prioritized features for LMS platforms. Reduced engineering rework by 80% through clear wireframing.",
+    period: "Jan 2023 - Mar 2024",
+    summary: "Owned the data reporting pipeline for student engagement, providing weekly insights to the Dean's office.",
     logo: Briefcase,
     highlight: false,
     metrics: [
-      { label: "Data Accuracy", value: "99%", desc: "Cleaned legacy student databases." },
-      { label: "Reports", value: "Weekly", desc: "Automated executive dashboards." },
-      { label: "Rework Reduction", value: "-80%", desc: "Through clear wireframing." }
+      { label: "Data Accuracy", value: "99%", icon: Zap },
+      { label: "Reports", value: "Weekly", icon: TrendingUp }
     ],
-    stack: ["Excel", "Python", "Tableau"]
+    bullets: [
+      "Cleaned legacy databases impacting 2000+ student records.",
+      "Automated the 'At-Risk Student' alert system using Python scripts."
+    ],
+    skills: ["Python", "Tableau", "Excel"]
   },
   {
-    id: 3,
-    company: "Masters' Union",
-    role: "Operations Intern",
-    location: "Gurugram, India",
-    type: "Internship",
-    date: "Apr 2023 - Jun 2023",
-    desc: "Built Power BI dashboards reducing KPI reporting time by 30%. Developed IT solutions that cut costs by 15%.",
-    logo: Briefcase,
-    highlight: false,
-    metrics: [
-      { label: "Reporting Time", value: "-30%", desc: "Reduced KPI reporting time." },
-      { label: "Cost Savings", value: "15%", desc: "Cut costs with IT solutions." },
-      { label: "Applications", value: "500+", desc: "Processed per month." }
-    ],
-    stack: ["Power BI", "Salesforce"]
-  },
-  {
-    id: 4,
+    id: 'readily',
     company: "Readily Mobility",
     role: "Marketing Intern",
-    location: "Remote / Hybrid",
+    location: "Remote",
     type: "Internship",
-    date: "May 2022 - Jul 2022",
-    desc: "Managed creative teams and secured partnerships with 15% of target workshops. Increased team productivity by 30%.",
+    period: "Jun 2022 - Aug 2022",
+    summary: "Executed go-to-market strategies for the initial launch phase.",
     logo: Briefcase,
     highlight: false,
     metrics: [
-      { label: "Partnerships", value: "15%", desc: "Of target workshops secured." },
-      { label: "Productivity", value: "+30%", desc: "Increased team productivity." }
+      { label: "Leads", value: "500+", icon: Users }
     ],
-    stack: ["Canva", "Google Ads", "Notion"]
+    bullets: [
+      "Managed social media calendar and content distribution.",
+      "Conducted competitor analysis to refine pricing strategy."
+    ],
+    skills: ["Social Media", "Canva", "Copywriting"]
   }
 ];
 
@@ -81,14 +75,15 @@ const educationData = [
     role: "PGDM (Management)",
     location: "Murshidabad",
     type: "Post Grad",
-    date: "2021 - 2023",
-    desc: "Secured victories in three Inter-College competitions at IIM Rohtak, MDI Gurgaon, and IMT Ghaziabad.",
+    period: "2021 - 2023",
+    summary: "Secured victories in three Inter-College competitions at IIM Rohtak, MDI Gurgaon, and IMT Ghaziabad.",
     logo: GraduationCap,
     highlight: true,
     metrics: [
-      { label: "Competitions Won", value: "3", desc: "Inter-College victories." }
+      { label: "Competitions Won", value: "3", icon: Zap }
     ],
-    stack: []
+    bullets: [],
+    skills: []
   },
   {
     id: 2,
@@ -96,14 +91,15 @@ const educationData = [
     role: "B.Sc. Mathematics",
     location: "Bijnor",
     type: "Bachelor's",
-    date: "2016 - 2019",
-    desc: "Specialized in Mathematics. Built a strong foundation in analytical thinking and problem-solving.",
+    period: "2016 - 2019",
+    summary: "Specialized in Mathematics. Built a strong foundation in analytical thinking and problem-solving.",
     logo: GraduationCap,
     highlight: false,
     metrics: [
-      { label: "Specialization", value: "Mathematics", desc: "Analytical foundation." }
+      { label: "Specialization", value: "Mathematics", icon: Zap }
     ],
-    stack: []
+    bullets: [],
+    skills: []
   }
 ];
 
@@ -151,7 +147,7 @@ const InfoCard = ({ item, onClick }) => {
         <h3 className="text-lg font-black font-sans leading-tight mb-1">{item.company}</h3>
         <p className="font-bold text-sm opacity-80 mb-3">{item.role}</p>
         <p className="text-sm font-medium leading-relaxed opacity-70">
-          {item.desc}
+          {item.summary}
         </p>
       </div>
 
@@ -160,7 +156,7 @@ const InfoCard = ({ item, onClick }) => {
         <div className="bg-black text-white p-1 rounded-full">
           <Calendar size={12} />
         </div>
-        {item.date}
+        {item.period}
       </div>
     </motion.div>
   );
@@ -168,7 +164,7 @@ const InfoCard = ({ item, onClick }) => {
 
 export default function ExperienceSection() {
   const [activeTab, setActiveTab] = useState('experience'); // 'experience' | 'education'
-  const [selectedItem, setSelectedItem] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
 
   const data = activeTab === 'experience' ? experienceData : educationData;
 
@@ -180,7 +176,7 @@ export default function ExperienceSection() {
 
   // Prevent background scroll when modal is open
   useEffect(() => {
-    if (selectedItem) {
+    if (modalOpen) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
@@ -188,27 +184,7 @@ export default function ExperienceSection() {
     return () => {
       document.body.style.overflow = 'unset';
     };
-  }, [selectedItem]);
-
-  // Keyboard navigation
-  useEffect(() => {
-    if (!selectedItem) return;
-    const handleKeyDown = (e) => {
-      if (e.key === 'ArrowLeft') {
-        const currentIndex = data.findIndex(item => item.id === selectedItem.id);
-        const prevIndex = currentIndex > 0 ? currentIndex - 1 : data.length - 1;
-        setSelectedItem(data[prevIndex]);
-      } else if (e.key === 'ArrowRight') {
-        const currentIndex = data.findIndex(item => item.id === selectedItem.id);
-        const nextIndex = currentIndex < data.length - 1 ? currentIndex + 1 : 0;
-        setSelectedItem(data[nextIndex]);
-      } else if (e.key === 'Escape') {
-        setSelectedItem(null);
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [selectedItem, data]);
+  }, [modalOpen]);
 
   return (
     <section id="experience" className="w-full py-24 bg-[#fafafa] border-b-2 border-black font-sans">
@@ -256,107 +232,16 @@ export default function ExperienceSection() {
         </div>
 
         {/* Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <AnimatePresence>
             {data.map((item) => (
-              <InfoCard key={item.id} item={item} onClick={() => setSelectedItem(item)} />
+              <InfoCard key={item.id} item={item} onClick={() => setModalOpen(true)} />
             ))}
           </AnimatePresence>
-        </div>
+        </motion.div>
 
         {/* Modal for Details */}
-        <AnimatePresence>
-          {selectedItem && (
-            <div className="fixed inset-0 z-[60] flex items-center justify-center p-4">
-
-              {/* Backdrop */}
-              <div
-                className="absolute inset-0 bg-black/60 backdrop-blur-sm"
-                onClick={() => setSelectedItem(null)}
-              />
-
-              {/* Main Modal Card */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                className="relative bg-white w-full max-w-5xl h-[80vh] md:h-[600px] rounded-3xl border-4 border-black shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] overflow-hidden flex flex-col font-sans"
-              >
-
-                {/* CONTENT: Role Details */}
-                <div className="flex-1 p-8 md:p-10 flex flex-col overflow-y-auto relative bg-white">
-
-                  {/* Close Button */}
-                  <button
-                    onClick={() => setSelectedItem(null)}
-                    className="absolute top-4 right-4 z-10 bg-white border-2 border-black rounded-full p-2 hover:bg-[#DFFF00] transition-colors shadow-[4px_4px_0px_0px_#000]"
-                  >
-                    <X size={24} />
-                  </button>
-
-                  {/* Header */}
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={selectedItem.id}
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: -20 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <div className="mb-6">
-                        <div className="inline-flex items-center gap-2 bg-[#DFFF00] border border-black px-3 py-1 rounded-full text-xs font-black uppercase tracking-widest mb-3">
-                          <Zap size={12} className="fill-black" /> {selectedItem.type}
-                        </div>
-                        <h2 className="text-3xl font-black uppercase leading-none mb-2">
-                          {selectedItem.role}
-                        </h2>
-                        <div className="flex items-center gap-4 text-xs font-bold text-gray-500 uppercase">
-                          <span className="flex items-center gap-1"><MapPin size={14} /> {selectedItem.location}</span>
-                          <span className="flex items-center gap-1"><Calendar size={14} /> {selectedItem.date}</span>
-                        </div>
-                      </div>
-
-                      {/* Description */}
-                      <p className="text-base font-medium text-gray-800 leading-relaxed mb-8 max-w-2xl border-l-4 border-[#DFFF00] pl-4">
-                        {selectedItem.desc}
-                      </p>
-
-                      {/* Achievements */}
-                      {selectedItem.achievements && selectedItem.achievements.length > 0 && (
-                        <div className="mb-8">
-                          <h4 className="text-xs font-black uppercase tracking-widest text-gray-400 mb-4">Key Achievements</h4>
-                          <ul className="space-y-3">
-                            {selectedItem.achievements.map((ach, i) => (
-                              <li key={i} className="flex items-start gap-3">
-                                <div className="w-2 h-2 bg-black rounded-full mt-2 shrink-0"></div>
-                                <span className="text-gray-700 leading-relaxed">{ach}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
-
-                      {/* Tech Stack Footer */}
-                      {selectedItem.stack && selectedItem.stack.length > 0 && (
-                        <div>
-                          <h4 className="text-xs font-black uppercase tracking-widest text-gray-400 mb-3">Tool Stack</h4>
-                          <div className="flex flex-wrap gap-2">
-                            {selectedItem.stack.map((tool) => (
-                              <span key={tool} className="px-3 py-1.5 rounded-lg border border-black text-xs font-bold uppercase shadow-[2px_2px_0px_0px_rgba(0,0,0,0.1)]">
-                                {tool}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-
-                    </motion.div>
-                  </AnimatePresence>
-                </div>
-              </motion.div>
-            </div>
-          )}
-        </AnimatePresence>
+        {modalOpen && <ExperienceModal data={data} onClose={() => setModalOpen(false)} />}
 
       </div>
     </section>
