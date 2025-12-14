@@ -90,7 +90,7 @@ export default function Footer() {
             <div className="flex gap-4">
               <SocialLink icon={FaLinkedin} href="https://linkedin.com/in/akash-sharma-10091999" />
               <SocialLink icon={FaGithub} href="https://github.com/AkashSharma19" />
-              <SocialLink icon={FaTwitter} href="#" />
+              <SocialLink icon={Mail} href="mailto:sharmaakash4299@gmail.com" />
             </div>
         </div>
 

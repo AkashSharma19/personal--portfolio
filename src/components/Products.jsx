@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowDownCircle, ArrowUpRight, Package, Rocket } from 'lucide-react';
 import ProjectModal from './ProjectModal'; // We can rename this file to ProductModal.jsx later if you want
@@ -148,6 +148,18 @@ export default function ProductsSection() {
   };
 
   const selectedProduct = ALL_PRODUCTS.find(p => p.id === selectedId);
+
+  // Prevent background scroll when modal is open
+  useEffect(() => {
+    if (selectedProduct) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [selectedProduct]);
 
   return (
     <section id="products" className="py-24 bg-white border-t-2 border-black font-sans">
