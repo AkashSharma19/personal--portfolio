@@ -22,7 +22,7 @@ export default function Playground() {
           <div className="inline-flex items-center gap-2 bg-black text-[#DFFF00] border-2 border-black px-4 py-1 rounded-full text-xs font-black uppercase tracking-widest mb-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)]">
             <Gamepad2 size={16} /> Product Playground
           </div>
-          <h2 className="text-4xl md:text-5xl font-black uppercase leading-none">
+          <h2 className="text-3xl md:text-4xl font-black uppercase leading-none">
             Test My <span className="underline decoration-wavy decoration-[#DFFF00]">Instincts</span>
           </h2>
         </div>

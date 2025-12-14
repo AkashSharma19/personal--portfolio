@@ -101,7 +101,7 @@ export default function ExperienceModal({ data, onClose }) {
                     </span>
                   </div>
 
-                  <h2 className="text-4xl md:text-5xl font-black uppercase leading-[0.9] mb-2">
+                  <h2 className="text-2xl md:text-3xl font-black uppercase leading-[0.9] mb-2">
                     {activeTab.role}
                   </h2>
                   <h3 className="text-xl font-bold text-gray-500 uppercase">

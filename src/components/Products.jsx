@@ -141,10 +141,10 @@ const ALL_PRODUCTS = [
 
 export default function ProductsSection() {
   const [selectedId, setSelectedId] = useState(null);
-  const [visibleCount, setVisibleCount] = useState(4);
+  const [visibleCount, setVisibleCount] = useState(3);
 
   const handleLoadMore = () => {
-    setVisibleCount((prev) => prev + 2);
+    setVisibleCount((prev) => prev + 3);
   };
 
   const selectedProduct = ALL_PRODUCTS.find(p => p.id === selectedId);
@@ -158,7 +158,7 @@ export default function ProductsSection() {
           <div className="inline-flex items-center gap-2 bg-black text-[#DFFF00] px-4 py-1 rounded-full text-xs font-black uppercase tracking-widest mb-4">
             <Rocket size={14} /> Shipped Work
           </div>
-          <h2 className="text-5xl md:text-6xl font-black uppercase">
+          <h2 className="text-3xl md:text-4xl font-black uppercase">
             Products <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-500 to-black">Managed</span>
           </h2>
           <p className="mt-4 text-gray-500 font-bold max-w-lg">
@@ -167,7 +167,7 @@ export default function ProductsSection() {
         </div>
 
         {/* --- PRODUCT GRID --- */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           {ALL_PRODUCTS.slice(0, visibleCount).map((product) => (
             <motion.div
               key={product.id}
@@ -191,7 +191,7 @@ export default function ProductsSection() {
                   <Package size={14} /> {product.tagline}
                 </div>
 
-                <h3 className="text-3xl font-black uppercase mb-1 leading-none">{product.title}</h3>
+                <h3 className="text-xl font-black uppercase mb-1 leading-none">{product.title}</h3>
 
                 <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity">
                   <div className="bg-black text-white p-2 rounded-full border-2 border-transparent">

@@ -83,7 +83,7 @@ export default function Footer() {
         {/* LEFT COLUMN: Contact Info (Same as before) */}
         <div className="w-full md:w-1/3 flex flex-col justify-between">
             <div>
-               <h2 className="text-5xl md:text-6xl font-black uppercase mb-6 leading-none">
+               <h2 className="text-4xl md:text-5xl font-black uppercase mb-6 leading-none">
                  Let's Build <br/> <span className="text-[#DFFF00]">Something.</span>
                </h2>
                <p className="text-gray-400 text-lg">Don't like forms? No problem.</p>
@@ -97,7 +97,7 @@ export default function Footer() {
 
         {/* RIGHT COLUMN: The "Mad Libs" Form */}
         <div className="flex-1 bg-gray-900/50 p-8 md:p-12 rounded-3xl border border-gray-800 backdrop-blur-sm">
-          <form className="text-2xl md:text-3xl font-bold leading-relaxed text-gray-400" onSubmit={handleShip}>
+          <form className="text-lg md:text-xl font-bold leading-relaxed text-gray-400" onSubmit={handleShip}>
             
             <span>Hi Akash, my name is </span>
             <input

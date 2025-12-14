@@ -303,7 +303,7 @@ export default function HeroSection() {
           style={{ borderRadius: '60% 40% 30% 70% / 60% 30% 70% 40%' }}
         >
           <div className="text-center">
-            <h2 className="text-2xl md:text-4xl font-black leading-tight">AKASH<br/>SHARMA</h2>
+            <h2 className="text-lg md:text-2xl font-black leading-tight">AKASH<br/>SHARMA</h2>
           </div>
         </motion.div>
 

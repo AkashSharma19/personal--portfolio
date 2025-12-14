@@ -70,11 +70,11 @@ export default function IdeaGenerator() {
           <div className="flex flex-col md:flex-row gap-4 mb-4">
             {/* Slot 1 */}
             <div className="flex-1 bg-white h-24 rounded-xl flex items-center justify-center border-4 border-gray-800 relative overflow-hidden">
-               <motion.span 
-                 key={idea.col1} 
-                 initial={{ y: -50, opacity: 0 }} 
+               <motion.span
+                 key={idea.col1}
+                 initial={{ y: -50, opacity: 0 }}
                  animate={{ y: 0, opacity: 1 }}
-                 className="text-lg md:text-xl font-black uppercase tracking-tighter"
+                 className="text-base md:text-lg font-black uppercase tracking-tighter"
                >
                  {idea.col1}
                </motion.span>
@@ -83,11 +83,11 @@ export default function IdeaGenerator() {
 
             {/* Slot 2 */}
             <div className="flex-1 bg-white h-24 rounded-xl flex items-center justify-center border-4 border-gray-800 relative overflow-hidden">
-               <motion.span 
-                 key={idea.col2} 
-                 initial={{ y: 50, opacity: 0 }} 
+               <motion.span
+                 key={idea.col2}
+                 initial={{ y: 50, opacity: 0 }}
                  animate={{ y: 0, opacity: 1 }}
-                 className="text-xl md:text-2xl font-black uppercase tracking-tighter text-[#65a30d]"
+                 className="text-lg md:text-xl font-black uppercase tracking-tighter text-[#65a30d]"
                >
                  {idea.col2}
                </motion.span>
@@ -96,11 +96,11 @@ export default function IdeaGenerator() {
 
             {/* Slot 3 */}
             <div className="flex-1 bg-white h-24 rounded-xl flex items-center justify-center border-4 border-gray-800 relative overflow-hidden">
-               <motion.span 
-                 key={idea.col3} 
-                 initial={{ y: -50, opacity: 0 }} 
+               <motion.span
+                 key={idea.col3}
+                 initial={{ y: -50, opacity: 0 }}
                  animate={{ y: 0, opacity: 1 }}
-                 className="text-xl md:text-2xl font-black uppercase tracking-tighter"
+                 className="text-lg md:text-xl font-black uppercase tracking-tighter"
                >
                  {idea.col3}
                </motion.span>

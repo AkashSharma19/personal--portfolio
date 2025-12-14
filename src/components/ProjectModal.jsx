@@ -36,11 +36,11 @@ export default function ProjectModal({ product, onClose }) {
               <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"/>
               <span className="text-[10px] font-black uppercase tracking-widest text-gray-500">{product.status}</span>
             </div>
-            <h2 className="text-xl md:text-2xl font-black uppercase leading-none">{product.title}</h2>
+            <h2 className="text-lg md:text-xl font-black uppercase leading-none">{product.title}</h2>
           </div>
           <button
             onClick={onClose}
-            className="p-2 bg-black text-white rounded-full hover:scale-110 transition-transform"
+            className="p-2 bg-white text-black border-2 border-black rounded-full hover:bg-[#DFFF00] transition-colors shadow-[4px_4px_0px_0px_#000]"
           >
             <X size={20} />
           </button>
@@ -60,7 +60,7 @@ export default function ProjectModal({ product, onClose }) {
           <div className="p-6 md:p-10 space-y-12">
 
             {/* SECTION 1: THE PROBLEM (Data First) */}
-            <section className="grid md:grid-cols-3 gap-8 items-start">
+            <section className="grid grid-cols-3 gap-8 items-start">
               <div className="md:col-span-1">
                 <h3 className="text-xs font-black uppercase text-gray-400 mb-2 flex items-center gap-2">
                   <Search size={14} /> The Problem
@@ -114,7 +114,7 @@ export default function ProjectModal({ product, onClose }) {
             {/* SECTION 5: IMPACT (Metrics) */}
             <section>
               <h3 className="text-xs font-black uppercase text-gray-400 mb-6">Success Metrics</h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="grid grid-cols-3 gap-4">
                 {product.metrics.map((m, i) => {
                   const IconComponent = iconMap[m.icon];
                   return (

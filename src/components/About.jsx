@@ -42,7 +42,7 @@ const AwardCard = () => (
          <path id="curve" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="transparent"/>
          <text className="text-[14px] font-bold uppercase fill-white">
            <textPath href="#curve">
-             • Director's Award • Winner •
+            • Director's Award • Winner
            </textPath>
          </text>
        </svg>
@@ -58,7 +58,7 @@ const AwardCard = () => (
         <div className="inline-block bg-black text-[#DFFF00] px-4 py-1 rounded-full text-xs font-black uppercase tracking-widest mb-4">
           Double Victory
         </div>
-        <h3 className="text-4xl md:text-5xl font-black uppercase leading-[0.9] mb-4">
+        <h3 className="text-3xl md:text-4xl font-black uppercase leading-[0.9] mb-4">
           Innovation <br/> Excellence
         </h3>
         <p className="font-bold text-black border-l-4 border-black pl-4 leading-tight">
@@ -90,7 +90,7 @@ const StickerStat = ({ label, value, rotate }) => (
     viewport={{ once: true }}
     className={`bg-white border-2 border-black p-6 shadow-[4px_4px_0px_0px_#000] flex flex-col items-center justify-center text-center transform ${rotate}`}
   >
-    <div className="text-5xl md:text-6xl font-black mb-1">
+    <div className="text-4xl md:text-5xl font-black mb-1">
       {value}
     </div>
     <div className="text-xs font-bold uppercase tracking-widest bg-black text-white px-2 py-1">
@@ -140,10 +140,10 @@ export default function AboutSection() {
 
           {/* LEFT: Narrative + Stats Stickers */}
           <div className="lg:col-span-6 flex flex-col gap-10">
-            <p className="text-xl md:text-2xl font-medium leading-relaxed text-gray-800 border-l-4 border-[#DFFF00] pl-6">
+            <p className="text-lg md:text-xl font-medium leading-relaxed text-gray-800 border-l-4 border-[#DFFF00] pl-6">
               I am an <b>Assistant Product Manager</b> with a background in Mathematics. Currently driving operational excellence at <b>Masters' Union</b>.
             </p>
-            <p className="text-lg text-gray-600 leading-relaxed">
+            <p className="text-base text-gray-600 leading-relaxed">
               My philosophy is simple: <b>High Impact, Low Drag.</b> Whether it's cutting grading time by 60% with AI or building automation workflows, I build products that make sense.
             </p>
 
