@@ -306,7 +306,7 @@ export default function HeroSection() {
           initial={{ scale: 0, rotate: 10 }}
           animate={{ scale: 1, rotate: -2 }}
           transition={{ type: "spring", delay: 0.5 }}
-          className="absolute top-[25%] md:top-[60%] left-1/2 -translate-x-1/2 z-30 bg-[#111] text-white p-6 md:p-12 border-4 border-white shadow-xl"
+          className="absolute top-[25%] md:top-[60%] left-[55%] -translate-x-1/2 z-30 bg-[#111] text-white p-6 md:p-12 border-4 border-white shadow-xl"
           style={{ borderRadius: '60% 40% 30% 70% / 60% 30% 70% 40%' }}
         >
           <div className="text-center">
