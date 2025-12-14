@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion, useAnimation, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { Figma, Database, BarChart3, Workflow, Users, Layout, Zap, Star } from 'lucide-react';
+import { Figma, Database, BarChart3, Workflow, Users, Layout, Zap, Star, PenTool, Video, CheckSquare, FileText, Monitor, Globe, Mail, Settings } from 'lucide-react';
 
 // --- Components ---
 
@@ -102,12 +102,26 @@ const StickerStat = ({ label, value, rotate }) => (
 // --- Main About Component ---
 
 export default function AboutSection() {
-  const skills = [
-    { name: "Figma", icon: Figma },
+  const tools = [
+    { name: "Figma", icon: PenTool },
+    { name: "Miro", icon: Layout },
+    { name: "Loom", icon: Video },
+    { name: "Storylane", icon: Monitor },
+    { name: "Jira", icon: CheckSquare },
+    { name: "ClickUp", icon: CheckSquare },
+    { name: "Notion", icon: FileText },
+    { name: "MS Excel", icon: Database },
+    { name: "Microsoft PowerPoint", icon: Monitor },
+    { name: "Google Sheets", icon: Database },
+    { name: "Google Docs", icon: FileText },
+    { name: "Scribe", icon: PenTool },
     { name: "Power BI", icon: BarChart3 },
-    { name: "SQL", icon: Database },
-    { name: "N8N", icon: Workflow },
-    { name: "Jira", icon: Users },
+    { name: "Google Analytics", icon: BarChart3 },
+    { name: "N8N", icon: Workflow }
+  ];
+
+  const productManagement = [
+    "Product Lifecycle Management", "Agile Methodology", "Market Research (Primary & Secondary)", "Competitor Benchmarking", "Roadmapping", "Sprint Planning/Docs", "Prioritization", "Wireframing", "PRD (Product Requirement Documents)", "User Experience (UX)", "User Feedback Loops", "Training"
   ];
 
   return (
@@ -163,14 +177,17 @@ export default function AboutSection() {
 
             {/* Toolkit Row */}
             <div className="mt-8">
-              <h4 className="font-bold uppercase tracking-widest text-xs mb-4 opacity-50">My Daily Toolkit</h4>
+              <h4 className="font-bold uppercase tracking-widest text-xs mb-4 opacity-50">TOOLS</h4>
               <div className="flex flex-wrap gap-2">
-                {skills.map((skill, i) => (
-                  <div key={i} className="flex items-center gap-2 px-4 py-2 bg-black text-white rounded-lg border border-white/20">
-                    <skill.icon size={16} className="text-[#DFFF00]" />
-                    <span className="font-bold text-sm uppercase">{skill.name}</span>
-                  </div>
-                ))}
+                {tools.map((tool, i) => {
+                  const IconComponent = tool.icon;
+                  return (
+                    <div key={i} className="flex items-center gap-2 px-3 py-2 bg-black text-white rounded-lg border border-white/20">
+                      <IconComponent size={14} className="text-[#DFFF00]" />
+                      <span className="font-medium text-sm">{tool.name}</span>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>
