@@ -11,7 +11,7 @@ const experienceData = [
     role: "Assistant Product Manager",
     location: "Gurugram, India",
     type: "Full Time",
-    period: "Apr 2024 - Present",
+    period: "Apr 2025 - Present",
     summary: "Spearheaded the digital transformation of the grading infrastructure, moving from manual spreadsheets to an AI-first ecosystem.",
     logo: Briefcase,
     highlight: true,
@@ -33,7 +33,7 @@ const experienceData = [
     role: "Product Analyst",
     location: "Gurugram, India",
     type: "Full Time",
-    period: "Jan 2023 - Mar 2024",
+    period: "Jun 2023 - May 2025",
     summary: "Owned the data reporting pipeline for student engagement, providing weekly insights to the Dean's office.",
     logo: Briefcase,
     highlight: false,
@@ -197,7 +197,7 @@ export default function ExperienceSection() {
               Working Experience
             </span>
             <h2 className="text-3xl md:text-4xl font-black leading-tight max-w-xl">
-              We Provide 5 Years Experience For Service.
+              I HAVE 1.9 YEARS OF EXPERIENCE.
             </h2>
           </div>
 

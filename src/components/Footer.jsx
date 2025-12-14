@@ -83,10 +83,9 @@ export default function Footer() {
         {/* LEFT COLUMN: Contact Info (Same as before) */}
         <div className="w-full md:w-1/3 flex flex-col justify-between">
             <div>
-               <h2 className="text-4xl md:text-5xl font-black uppercase mb-6 leading-none">
+               <h2 className="text-3xl md:text-4xl font-black uppercase mb-6 leading-none">
                  Let's Build <br/> <span className="text-[#DFFF00]">Something.</span>
                </h2>
-               <p className="text-gray-400 text-lg">Don't like forms? No problem.</p>
             </div>
             <div className="flex gap-4">
               <SocialLink icon={FaLinkedin} href="https://linkedin.com/in/akash-sharma-10091999" />
@@ -97,7 +96,7 @@ export default function Footer() {
 
         {/* RIGHT COLUMN: The "Mad Libs" Form */}
         <div className="flex-1 bg-gray-900/50 p-8 md:p-12 rounded-3xl border border-gray-800 backdrop-blur-sm">
-          <form className="text-lg md:text-xl font-bold leading-relaxed text-gray-400" onSubmit={handleShip}>
+          <form className="text-xl md:text-2xl font-bold leading-relaxed text-gray-400" onSubmit={handleShip}>
             
             <span>Hi Akash, my name is </span>
             <input
@@ -127,11 +126,11 @@ export default function Footer() {
 
 
             {/* --- THE ANIMATED BUTTON --- */}
-            <div className="mt-12 relative h-20"> {/* Fixed height to prevent layout jumps */}
+            <div className="mt-12 relative h-16"> {/* Fixed height to prevent layout jumps */}
               <button 
                 onClick={handleShip}
                 disabled={status !== 'idle'}
-                className={`relative w-full h-full rounded-xl text-xl font-black uppercase tracking-widest overflow-hidden transition-all duration-300 ${
+                className={`relative w-full h-full rounded-xl text-lg font-black uppercase tracking-widest overflow-hidden transition-all duration-300 ${
                   status === 'shipped' ? 'bg-green-500 text-white' : 'bg-[#DFFF00] text-black hover:scale-[1.02]'
                 }`}
               >
