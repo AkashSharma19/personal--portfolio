@@ -23,7 +23,7 @@ const Navbar = () => {
           {[
             { name: 'Home', href: '#' },
             { name: 'About', href: '#about' },
-            { name: 'Projects', href: '#projects' },
+            { name: 'Products', href: '#products' },
             { name: 'Experience', href: '#experience' }
           ].map((item) => (
             <a key={item.name} href={item.href} className="hover:underline decoration-2 underline-offset-4">
@@ -60,7 +60,7 @@ const Navbar = () => {
               {[
                 { name: 'Home', href: '#' },
                 { name: 'About', href: '#about' },
-                { name: 'Projects', href: '#projects' },
+                { name: 'Products', href: '#products' },
                 { name: 'Experience', href: '#experience' }
               ].map((item) => (
                 <a

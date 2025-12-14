@@ -20,7 +20,7 @@ const Nav = () => {
               {[
                 { href: '#hero', label: 'Home' },
                 { href: '#about', label: 'About' },
-                { href: '#projects', label: 'Projects' },
+                { href: '#products', label: 'Products' },
                 { href: '#skills', label: 'Skills' },
                 { href: '#experience', label: 'Experience' },
                 { href: '#contact', label: 'Contact' }
@@ -68,7 +68,7 @@ const Nav = () => {
             {[
               { href: '#hero', label: 'Home' },
               { href: '#about', label: 'About' },
-              { href: '#projects', label: 'Projects' },
+              { href: '#products', label: 'Products' },
               { href: '#skills', label: 'Skills' },
               { href: '#experience', label: 'Experience' },
               { href: '#contact', label: 'Contact' }

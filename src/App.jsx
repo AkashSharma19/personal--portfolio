@@ -2,7 +2,7 @@ import React from 'react'
 import Nav from './components/Nav'
 import Hero from './components/Hero'
 import About from './components/About'
-import Projects from './components/Projects'
+import Products from './components/Products'
 import Playground from './components/Playground'
 import Experience from './components/Experience'
 import Footer from './components/Footer'
@@ -14,7 +14,7 @@ function App() {
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
       <Hero />
       <About />
-      <Projects />
+      <Products />
       <Playground />
       <Experience />
       <Footer />
