@@ -56,13 +56,13 @@ const AwardCard = () => (
     >
       <div className="relative z-10 mb-6">
         <div className="inline-block bg-black text-[#DFFF00] px-4 py-1 rounded-full text-xs font-black uppercase tracking-widest mb-4">
-          Double Victory
+          2x DIRECTOR'S AWARD
         </div>
         <h3 className="text-3xl md:text-4xl font-black uppercase leading-[0.9] mb-4">
           Innovation <br/> Excellence
         </h3>
         <p className="font-bold text-black border-l-4 border-black pl-4 leading-tight">
-          "Recognized twice for defining the future of EdTech operations."
+          Recognized twice for leading high-impact product innovations.
         </p>
       </div>
 
@@ -144,19 +144,19 @@ export default function AboutSection() {
               I am an <b>Assistant Product Manager</b> with a background in Mathematics. Currently driving operational excellence at <b>Masters' Union</b>.
             </p>
             <p className="text-base text-gray-600 leading-relaxed">
-              My philosophy is simple: <b>High Impact, Low Drag.</b> Whether it's cutting grading time by 60% with AI or building automation workflows, I build products that make sense.
+              My philosophy is simple: <b>Automate to Innovate.</b> Whether it's reducing grievance resolution times by 60% or building N8N workflows to cut manual effort, I design systems that scale without the friction.
             </p>
 
             {/* The "Sticker" Stats - Rotated for 'Collage' feel */}
             <div className="flex gap-6 mt-4">
               <StickerStat
                 value={<CountUp to="60" suffix="%" />}
-                label="Faster Grading"
+                label="FASTER RESOLUTIONS"
                 rotate="rotate-[-2deg]"
               />
               <StickerStat
                 value={<CountUp to="40" suffix="%" />}
-                label="Efficiency Boost"
+                label="AUTOMATED GRADING"
                 rotate="rotate-[2deg] mt-8"
               />
             </div>
