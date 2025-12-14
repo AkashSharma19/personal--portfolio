@@ -197,7 +197,7 @@ export default function ExperienceSection() {
               Working Experience
             </span>
             <h2 className="text-3xl md:text-4xl font-black leading-tight max-w-xl">
-              I HAVE 1.9 YEARS OF EXPERIENCE.
+              I HAVE 2.5 YEARS OF EXPERIENCE.
             </h2>
           </div>
 
