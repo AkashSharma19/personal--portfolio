@@ -1,8 +1,138 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { FaLinkedin, FaGithub, FaStar, FaBars, FaTimes } from 'react-icons/fa';
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
+import { FaLinkedin, FaGithub, FaStar } from 'react-icons/fa';
 import { MdMail } from 'react-icons/md';
-import { FiArrowUpRight } from 'react-icons/fi';
+import { ArrowUpRight, Menu, X } from 'lucide-react';
+
+const LINKS = [
+  { name: 'Home', id: 'hero' },
+  { name: 'About', id: 'about' },
+  { name: 'Products', id: 'products' },
+  { name: 'Experience', id: 'experience' },
+];
+
+const AnimatedNavbar = () => {
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [hidden, setHidden] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { scrollY } = useScroll();
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = scrollY.getPrevious();
+    if (latest > previous) {
+      setHidden(true);
+    } else {
+      setHidden(false);
+    }
+  });
+
+  const scrollToSection = (id) => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+    setMobileMenuOpen(false);
+  };
+
+  return (
+    <>
+      <motion.nav
+        variants={{
+          visible: { y: 0, opacity: 1 },
+          hidden: { y: -200, opacity: 0 },
+        }}
+        animate={hidden ? "hidden" : "visible"}
+        transition={{ duration: 0.35, ease: "easeInOut" }}
+        className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none"
+      >
+        <div className="pointer-events-auto bg-white border-2 border-black rounded-full px-2 py-2 md:px-6 md:py-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex items-center gap-4 md:gap-8 max-w-4xl w-full justify-between">
+
+          <div
+            className="font-black text-xl uppercase tracking-tighter cursor-pointer select-none"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          >
+            Akash.
+          </div>
+
+          <div className="hidden md:flex items-center gap-2">
+            {LINKS.map((link, index) => (
+              <div
+                key={link.id}
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
+                onClick={() => scrollToSection(link.id)}
+                className="relative px-4 py-2 cursor-pointer text-sm font-bold uppercase transition-colors"
+              >
+                {hoveredIndex === index && (
+                  <motion.div
+                    layoutId="navbar-hover"
+                    className="absolute inset-0 bg-[#DFFF00] rounded-full border border-black z-0"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                  />
+                )}
+                <span className="relative z-10">{link.name}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex items-center gap-4">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95, boxShadow: "0px 0px 0px 0px #000", translate: "2px 2px" }}
+              onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
+              className="bg-[#DFFF00] text-black border-2 border-black px-5 py-2 rounded-full font-black uppercase text-xs md:text-sm flex items-center gap-2 shadow-[2px_2px_0px_0px_#000] transition-all"
+            >
+              Let's Talk <ArrowUpRight size={16} />
+            </motion.button>
+
+            <button
+              className="md:hidden p-2 rounded-full hover:bg-gray-100"
+              onClick={() => setMobileMenuOpen(true)}
+            >
+              <Menu size={24} />
+            </button>
+          </div>
+
+        </div>
+      </motion.nav>
+
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="fixed inset-0 z-[60] bg-white p-6 flex flex-col"
+          >
+            <div className="flex justify-between items-center mb-12">
+              <div className="font-black text-2xl uppercase">Akash.</div>
+              <button onClick={() => setMobileMenuOpen(false)} className="p-2 border-2 border-black rounded-full hover:bg-[#DFFF00]">
+                <X size={24} />
+              </button>
+            </div>
+
+            <div className="flex flex-col gap-6">
+              {LINKS.map((link, i) => (
+                <motion.div
+                  key={link.id}
+                  initial={{ x: -20, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: i * 0.1 }}
+                  onClick={() => scrollToSection(link.id)}
+                  className="text-4xl font-black uppercase cursor-pointer hover:text-[#DFFF00] hover:stroke-black"
+                  style={{ WebkitTextStroke: "1px black" }}
+                >
+                  {link.name}
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  );
+};
 
 // --- Components ---
 
@@ -150,7 +280,7 @@ const Marquee = () => (
 export default function HeroSection() {
   return (
     <div className="relative w-full min-h-screen bg-[#E6F9C9] overflow-hidden font-sans text-black selection:bg-[#DFFF00]">
-      <Navbar />
+      <AnimatedNavbar />
 
       {/* Main Content Grid */}
       <div className="relative w-full h-screen flex flex-col justify-end items-center pb-20 md:pb-0">
