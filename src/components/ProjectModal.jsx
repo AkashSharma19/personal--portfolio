@@ -24,9 +24,9 @@ export default function ProjectModal({ product, onClose }) {
 
       {/* The PRD Card */}
       <motion.div
-        initial={{ y: "100%" }} animate={{ y: 0 }} exit={{ y: "100%" }}
+        initial={{ y: "100%" }} animate={{ y: 0 }} exit={{ y: "100%", opacity: 0 }}
         transition={{ type: "spring", damping: 25, stiffness: 200 }}
-        className="relative w-full max-w-4xl bg-white md:rounded-3xl border-t-2 md:border-2 border-black shadow-2xl overflow-hidden flex flex-col md:max-h-[90vh]"
+        className="relative w-full max-w-5xl h-[90vh] md:h-[650px] bg-[#f0f0f0] border-t-4 md:border-4 border-black md:rounded-3xl shadow-[0px_-10px_0px_0px_rgba(0,0,0,0.2)] md:shadow-[12px_12px_0px_0px_#000] overflow-hidden flex flex-col"
       >
 
         {/* Sticky Header */}

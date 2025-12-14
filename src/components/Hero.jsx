@@ -244,7 +244,7 @@ const RotatingBadge = () => (
 const Marquee = () => (
   <>
     {/* Second Marquee */}
-    <div className="absolute bottom-24 left-0 right-0 z-40 bg-[#DFFF00] text-[#111] border-t-2 border-black py-2 md:py-3 rotate-[4deg] scale-105 origin-bottom-left overflow-hidden whitespace-nowrap">
+    <div className="absolute bottom-36 md:bottom-24 left-0 right-0 z-40 bg-[#DFFF00] text-[#111] border-t-2 border-black py-2 md:py-3 rotate-[4deg] scale-105 origin-bottom-left overflow-hidden whitespace-nowrap">
       <motion.div
         animate={{ x: [0, -2000] }}
         transition={{ repeat: Infinity, duration: 25, ease: "linear" }}
@@ -268,11 +268,11 @@ export default function HeroSection() {
       <AnimatedNavbar />
 
       {/* Main Content Grid */}
-      <div className="relative w-full h-screen flex flex-col justify-end items-center pb-20 md:pb-0">
+      <div className="relative w-full min-h-[70vh] md:min-h-screen flex flex-col justify-end items-center pb-12 md:pb-0">
         
         {/* Layer 1: Background Massive Text */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center z-0 select-none pointer-events-none">
-          <h1 className="text-[10vw] leading-none font-black text-transparent" style={{ WebkitTextStroke: '2px black', opacity: 0.1 }}>
+          <h1 className="text-[12vw] md:text-[10vw] leading-none font-black text-black" style={{ opacity: 0.1 }}>
             PRODUCT
             <br />
             MANAGER
@@ -285,7 +285,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 100 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="relative z-10 w-[80vw] md:w-[40vw] max-w-[500px]"
+          className="relative z-10 w-[65vw] md:w-[40vw] max-w-[500px]"
         >
           <img
             src="/profile.png"
@@ -294,12 +294,19 @@ export default function HeroSection() {
           />
         </motion.div>
 
+        {/* Mobile Social Buttons */}
+        <div className="flex md:hidden justify-center gap-4 mt-4 z-20">
+          <SocialButton Icon={FaLinkedin} href="https://linkedin.com/in/akash-sharma-10091999" />
+          <SocialButton Icon={FaGithub} href="https://github.com/AkashSharma19" />
+          <SocialButton Icon={MdMail} href="mailto:sharmaakash4299@gmail.com" />
+        </div>
+
         {/* Layer 3: Name Blob */}
-        <motion.div 
+        <motion.div
           initial={{ scale: 0, rotate: 10 }}
           animate={{ scale: 1, rotate: -2 }}
           transition={{ type: "spring", delay: 0.5 }}
-          className="absolute top-[55%] md:top-[60%] left-1/2 -translate-x-1/2 z-30 bg-[#111] text-white p-8 md:p-12 border-4 border-white shadow-xl"
+          className="absolute top-[25%] md:top-[60%] left-1/2 -translate-x-1/2 z-30 bg-[#111] text-white p-6 md:p-12 border-4 border-white shadow-xl"
           style={{ borderRadius: '60% 40% 30% 70% / 60% 30% 70% 40%' }}
         >
           <div className="text-center">
@@ -328,7 +335,7 @@ export default function HeroSection() {
           initial={{ x: 100, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ delay: 0.8 }}
-          className="absolute right-2 md:right-16 top-1/2 z-40 bg-white p-3 md:p-4 pr-4 md:pr-8 rounded-xl border-2 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] flex items-center gap-2 md:gap-4 max-w-[200px] md:max-w-[250px]"
+          className="absolute right-4 md:right-16 top-[55%] md:top-1/2 z-40 bg-white p-3 md:p-4 pr-4 md:pr-8 rounded-xl border-2 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] flex items-center gap-2 md:gap-4 max-w-[180px] md:max-w-[250px]"
         >
           <div className="flex -space-x-2 md:-space-x-3">
              {[1,2,3].map(i => (
