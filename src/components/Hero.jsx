@@ -243,23 +243,8 @@ const RotatingBadge = () => (
 
 const Marquee = () => (
   <>
-    {/* First Marquee */}
-    <div className="absolute bottom-8 left-0 right-0 z-40 bg-[#111] text-[#DFFF00] border-t-2 border-black py-2 md:py-3 rotate-[-4deg] scale-105 origin-bottom-left overflow-hidden whitespace-nowrap">
-      <motion.div
-        animate={{ x: [0, -2000] }}
-        transition={{ repeat: Infinity, duration: 30, ease: "linear" }}
-        className="flex gap-4 md:gap-8 text-sm md:text-lg font-black uppercase"
-      >
-        {[...Array(6)].map((_, i) => (
-          <span key={i} className="flex items-center gap-4 md:gap-8">
-            Product Lifecycle Management (PLM) ✦ Vision & Strategy ✦ Roadmap Planning ✦ Wireframing ✦ User Experience (UX) ✦ User Feedback Loops ✦ Agile Methodologies ✦ Sprint Planning ✦ Documentation (PRDs, Changelogs) ✦
-          </span>
-        ))}
-      </motion.div>
-    </div>
-
     {/* Second Marquee */}
-    <div className="absolute bottom-20 md:bottom-24 left-0 right-0 z-40 bg-[#DFFF00] text-[#111] border-t-2 border-black py-2 md:py-3 rotate-[4deg] scale-105 origin-bottom-left overflow-hidden whitespace-nowrap">
+    <div className="absolute bottom-24 left-0 right-0 z-40 bg-[#DFFF00] text-[#111] border-t-2 border-black py-2 md:py-3 rotate-[4deg] scale-105 origin-bottom-left overflow-hidden whitespace-nowrap">
       <motion.div
         animate={{ x: [0, -2000] }}
         transition={{ repeat: Infinity, duration: 25, ease: "linear" }}
