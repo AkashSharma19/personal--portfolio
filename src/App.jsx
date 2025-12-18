@@ -68,6 +68,8 @@ function App() {
    const [activeSection, setActiveSection] = useState('home');
    const [formData, setFormData] = useState({ name: '', email: '', company: '', message: '' });
    const [status, setStatus] = useState('idle'); // idle, submitting, success, error
+   const [navVisible, setNavVisible] = useState(true);
+   const [lastScrollY, setLastScrollY] = useState(0);
 
    const handleSubmit = async (e) => {
      e.preventDefault();
@@ -100,8 +102,20 @@ function App() {
     const handleScroll = () => {
       if (!ticking) {
         requestAnimationFrame(() => {
-          const sections = ['home', 'skills', 'awards', 'works', 'experience', 'education', 'contact'];
-          const scrollPosition = window.scrollY + 150; // Increased offset for better detection
+          // 1. "Bottom of Page" Detection
+          // If the user has scrolled to the bottom (within 50px), force 'contact' active
+          if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
+            setActiveSection('contact');
+            ticking = false;
+            return;
+          }
+
+          const sections = ['home', 'awards', 'works', 'experience', 'education', 'contact'];
+
+          // 2. Change Offset to "Middle of Screen"
+          // Instead of +150, we use half the viewport height.
+          // This highlights the section that takes up the majority of the screen.
+          const scrollPosition = window.scrollY + (window.innerHeight / 2);
 
           for (const section of sections) {
             const element = document.getElementById(section);
@@ -119,28 +133,35 @@ function App() {
       }
     };
 
-    // Throttle scroll events for smoother performance
-    let scrollTimeout;
-    const throttledScroll = () => {
-      clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(handleScroll, 10);
-    };
-
-    window.addEventListener('scroll', throttledScroll, { passive: true });
+    window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll(); // Check initial position
 
     return () => {
-      window.removeEventListener('scroll', throttledScroll);
-      clearTimeout(scrollTimeout);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
+   useEffect(() => {
+     const handleScroll = () => {
+       const currentScrollY = window.scrollY;
+       if (currentScrollY > lastScrollY && currentScrollY > 100) {
+         setNavVisible(false);
+       } else if (currentScrollY < lastScrollY) {
+         setNavVisible(true);
+       }
+       setLastScrollY(currentScrollY);
+     };
+
+     window.addEventListener('scroll', handleScroll, { passive: true });
+     return () => window.removeEventListener('scroll', handleScroll);
+   }, [lastScrollY]);
 
   return (
     <div className="min-h-screen p-4 md:p-8 max-w-[1400px] mx-auto">
       
       {/* Navigation */}
       <nav className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4 mb-6">
-        <div className="bg-white/80 backdrop-blur-md border border-white/20 rounded-full px-6 py-3 shadow-lg flex items-center justify-between w-full max-w-4xl">
+        <div className={`bg-white/80 backdrop-blur-md border border-white/20 rounded-full px-6 py-3 shadow-lg flex items-center justify-between w-full max-w-4xl transition-transform duration-300 ${navVisible ? '' : '-translate-y-40'}`}>
           <div className="flex items-center gap-3">
             <div className="w-6 h-6 bg-yellow-400 rounded-full shadow-sm"></div>
             <span className="font-bold text-lg tracking-wide text-gray-900">AKASH</span>
@@ -179,7 +200,7 @@ function App() {
       <main className="space-y-6">
 
         {/* ROW 1: Intro (Span 2) + Profile (Span 1) */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-auto lg:h-[550px]">
+        <div id="home" className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-auto lg:h-[550px] scroll-mt-32">
 
             {/* Intro Card - Spans 2 columns */}
             <div className="lg:col-span-2 bg-gradient-to-br from-orange-50 via-gray-50 to-teal-50 rounded-[40px] p-8 md:p-12 flex flex-col justify-between">
